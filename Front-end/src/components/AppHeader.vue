@@ -10,8 +10,8 @@
         <div class="col-6">
           <nav>
             <ol class="d-flex justify-content-around">
-              <li><router-link class="text-warning" to="/">Robot</router-link></li>
               <li><router-link class="text-warning" to="/about">Team</router-link></li>
+              <li><router-link class="text-warning" to="/">Home</router-link></li>
               <li><router-link class="text-warning" to="#">Tornei</router-link></li>
             </ol>
           </nav>
