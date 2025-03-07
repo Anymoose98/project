@@ -4,7 +4,7 @@
   <header class="">
     <div class="container-fluid">
       <div class="row p-3 justify-content-between align-items-center">
-        <div class="col-3">
+        <div class="col-3 ps-5">
           <img src="../../public/logo2.png" id="logo" />
         </div>
         <div class="col-6">
@@ -16,37 +16,18 @@
             </ol>
           </nav>
         </div>
-        <div class="col-3 text-end">
+        <div class="col-3 text-end pe-5">
           <img src="../../public/logo2.png" id="logo" />
         </div>
       </div>
     </div>
   </header>
-  <div class="sfondo">
-    <div class="img-container">
-      <img src="../../public/robot4.webp" id="gif" alt="non funziona" />
-    </div>
-  </div>
 </template>
 
 <style scoped>
-.img-container {
-  height: calc(100vh - 100px);
-}
-.sfondo {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
-}
-#gif {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 header {
+  max-width: 100%;
   height: 100px;
   background-color: #282c2f;
   color: white;
