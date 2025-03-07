@@ -2,10 +2,11 @@
 
 <template>
   <main>
+    <!-- Gif robot -->
     <div class="sfondo">
-      <div class="img-container">
-        <img src="../../public/robot4.webp" id="gif" alt="non funziona" />
-      </div>
+    <div class="img-container">
+      <img src="../../public/robot4.webp" id="gif" alt="non funziona" />
+    </div>
     </div>
 
     <div class="container">
@@ -16,33 +17,14 @@
         </div>
 
         <!-- Inizio carosello -->
-        <div
-          id="carouselExampleCaptions"
-          class="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="5000"
-        >
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
           <div class="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -70,21 +52,13 @@
               <div class="carousel-caption d-none d-md-block"></div>
             </div>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -97,13 +71,25 @@
         </div>
 
         <!-- Paragrafo tornei -->
-        <div class="col-6">
+        <div class="col-50 d-flex flex-column">
+          <div class="col-laterale">
+            <!-- <span class="data-torneo">01/07/2025 - 31/09/2025</span> -->
+            <img src="../../public/1.jpeg" alt="" class="img-laterali">
+          </div>
+          <div class="col-laterale">
+            <!-- <span class="data-torneo">01/08/2024 - 31/06/2025</span> -->
+            <img src="../../public/2.jpeg" alt="" class="img-laterali">
+          </div>
+          <div class="col-laterale">
+            <!-- <span class="data-torneo">01/08/2024 - 31/06/2025</span> -->
+            <img src="../../public/3.jpeg" alt="" class="img-laterali">
+          </div>
+
         </div>
-        <div class="col-6">
-          <img src="../../public/robot-viola.webp" alt="">
+        <div class="col-50">
+          <img src="../../public/robot-viola.jpg" alt="" class="robot-viola" </div>
         </div>
       </div>
-    </div>
   </main>
 </template>
 
@@ -115,8 +101,22 @@
 #gif {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ritaglia l'immagine per riempire il contenitore */
-  object-position: top; /* Mostra la parte superiore della GIF */
+  object-fit: cover;
+  /* Ritaglia l'immagine per riempire il contenitore */
+  object-position: top;
+  /* Mostra la parte superiore della GIF */
+}
+
+.data-torneo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
 }
 
 main {
@@ -135,11 +135,36 @@ h1 {
   text-shadow: -1px -1px 0 rgb(0, 0, 0), 1px -1px 0 rgb(0, 0, 0), -1px 1px 0 rgb(0, 0, 0),
     1px 1px 0 rgb(0, 0, 0);
 }
+
 .blu {
   color: blue;
 }
 
 p {
   font-size: 20px;
+}
+
+.col-50 {
+  width: 50%;
+  padding: 0;
+}
+
+.robot-viola {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.col-laterale {
+  flex: 1;
+  /* Distribuisce lo spazio in modo uniforme */
+  display: flex;
+  position: relative;
+}
+
+.img-laterali {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 </style>
