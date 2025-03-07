@@ -14,13 +14,13 @@ public interface RobotRepo extends JpaRepository<Robot, Long> {
     
     List<Robot> findByMateriale(String materiale);
     
-    List<Robot> findByPeso(String peso);
+    List<Robot> findByPeso(double peso);
     
-    List<Robot> findByAltezza(String altezza);
+    List<Robot> findByAltezza(double altezza);
     
-    List<Robot> findByArmi(String armi);
+    List<Robot> findBystileDiCombattimento(String stileDiCombattimento);
     
-    List<Robot> findByVelocita(String velocita);
+    List<Robot> findByVelocita(double velocita);
     
     List<Robot> findByPunteggioRobot(int punteggioRobot);
     

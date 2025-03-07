@@ -1,6 +1,5 @@
 package com.example.demo.db.service;
 
-import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,11 +32,11 @@ public class TorneoService {
         return torneoRepo.findByNome(nome);
     }
 
-    public List<Torneo> getTorneiByDataInizio(LocalDate dataInizio) {
+    public List<Torneo> getTorneiByDataInizio(String dataInizio) {
         return torneoRepo.findByDataInizio(dataInizio);
     }
 
-    public List<Torneo> getTorneiByDataFine(LocalDate dataFine) {
+    public List<Torneo> getTorneiByDataFine(String dataFine) {
         return torneoRepo.findByDataFine(dataFine);
     }
 

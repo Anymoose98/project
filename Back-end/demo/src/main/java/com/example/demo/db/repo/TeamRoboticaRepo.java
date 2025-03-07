@@ -15,4 +15,6 @@ public interface TeamRoboticaRepo extends JpaRepository<TeamRobotica, Long> {
     List<TeamRobotica> findByPunteggioTeam(int punteggioTeam);
     
     List<TeamRobotica> findByTorneiVinti(int torneiVinti);
+
+    
 }

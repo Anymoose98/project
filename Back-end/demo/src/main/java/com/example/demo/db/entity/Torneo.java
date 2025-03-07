@@ -1,6 +1,5 @@
 package com.example.demo.db.entity;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -21,9 +20,9 @@ public class Torneo {
     private String nome;
 
     @Column(length = 64)
-    private LocalDate dataInizio;
+    private String dataInizio;
 
-    private LocalDate dataFine;
+    private String dataFine;
 
     private String geografica;
 
@@ -32,12 +31,12 @@ public class Torneo {
 
     public Torneo() {
         this.nome = "";
-        this.dataInizio = LocalDate.now();
-        this.dataFine = LocalDate.now();
+        this.dataInizio = "";
+        this.dataFine = "";
         this.geografica = "";
     }
 
-    public Torneo(String nome, LocalDate dataInizio, LocalDate dataFine, String geografica) {
+    public Torneo(String nome, String dataInizio, String dataFine, String geografica) {
         this.nome = nome;
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
@@ -60,19 +59,19 @@ public class Torneo {
         this.nome = nome;
     }
 
-    public LocalDate getDataInizio() {
+    public String getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(LocalDate dataInizio) {
+    public void setDataInizio(String dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public LocalDate getDataFine() {
+    public String getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(LocalDate dataFine) {
+    public void setDataFine(String dataFine) {
         this.dataFine = dataFine;
     }
 

@@ -3,6 +3,7 @@ package com.example.demo.db.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.example.demo.db.entity.TeamRobotica;
 import com.example.demo.db.repo.TeamRoboticaRepo;
 
@@ -12,7 +13,7 @@ public class TeamRoboticaService {
     @Autowired
     private TeamRoboticaRepo teamRoboticaRepo;
 
-    public List<TeamRobotica> getAllTeams() {
+    public List<TeamRobotica> findAll() {
         return teamRoboticaRepo.findAll();
     }
 
@@ -20,11 +21,11 @@ public class TeamRoboticaService {
         return teamRoboticaRepo.findById(id).orElse(null);
     }
 
-    public TeamRobotica saveTeam(TeamRobotica team) {
-        return teamRoboticaRepo.save(team);
+    public TeamRobotica save(TeamRobotica teamRobotica) {
+        return teamRoboticaRepo.save(teamRobotica);
     }
 
-    public void deleteTeam(Long id) {
+    public void deleteById(Long id) {
         teamRoboticaRepo.deleteById(id);
     }
 

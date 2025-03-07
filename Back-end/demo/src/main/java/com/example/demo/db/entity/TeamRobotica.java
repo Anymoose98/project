@@ -89,4 +89,7 @@ public class TeamRobotica {
                 ", punteggioTeam=" + punteggioTeam + 
                 ", torneiVinti=" + torneiVinti + "]";
     }
+
+    public void saveAll(List<TeamRobotica> asList) {
+    }
 }

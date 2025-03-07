@@ -40,19 +40,19 @@ public class RobotService {
         return robotRepo.findByMateriale(materiale);
     }
 
-    public List<Robot> getRobotsByPeso(String peso) {
+    public List<Robot> getRobotsByPeso(double peso) {
         return robotRepo.findByPeso(peso);
     }
 
-    public List<Robot> getRobotsByAltezza(String altezza) {
+    public List<Robot> getRobotsByAltezza(double altezza) {
         return robotRepo.findByAltezza(altezza);
     }
 
-    public List<Robot> getRobotsByArmi(String armi) {
-        return robotRepo.findByArmi(armi);
+    public List<Robot> getRobotsBystileDiCombattimento(String stileDiCombattimento) {
+        return robotRepo.findBystileDiCombattimento(stileDiCombattimento);
     }
 
-    public List<Robot> getRobotsByVelocita(String velocita) {
+    public List<Robot> getRobotsByVelocita(double velocita) {
         return robotRepo.findByVelocita(velocita);
     }
 

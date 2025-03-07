@@ -26,10 +26,10 @@ public class Robot {
     private String modello;
 
     private String materiale;
-    private String peso;
-    private String altezza;
-    private String armi;
-    private String velocita;
+    private double peso;
+    private double altezza;
+    private String stileDiCombattimento;
+    private double velocita;
     private int punteggioRobot;
 
     @ManyToOne
@@ -44,21 +44,21 @@ public class Robot {
         this.nome = "";
         this.modello = "";
         this.materiale = "";
-        this.peso = "";
-        this.altezza = "";
-        this.armi = "";
-        this.velocita = "";
+        this.peso = 0.0;
+        this.altezza = 0.0;
+        this.stileDiCombattimento = "";
+        this.velocita = 0.0;
         this.punteggioRobot = 0;
     }
 
-    public Robot(String nome, String modello, String materiale, String peso, String altezza, String armi, String velocita, int punteggioRobot) {
+    public Robot(String nome, String modello, String materiale, double peso, double altezza, String stileDiCombattimento, double velocita, int punteggioRobot) {
 
         this.nome = nome;
         this.modello = modello;
         this.materiale = materiale;
         this.peso = peso;
         this.altezza = altezza;
-        this.armi = armi;
+        this.stileDiCombattimento = stileDiCombattimento;
         this.velocita = velocita;
         this.punteggioRobot = punteggioRobot;
     }
@@ -95,35 +95,35 @@ public class Robot {
         this.materiale = materiale;
     }
 
-    public String getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(String peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
-    public String getAltezza() {
+    public double getAltezza() {
         return altezza;
     }
 
-    public void setAltezza(String altezza) {
+    public void setAltezza(double altezza) {
         this.altezza = altezza;
     }
 
-    public String getArmi() {
-        return armi;
+    public String getstileDiCombattimento() {
+        return stileDiCombattimento;
     }
 
-    public void setArmi(String armi) {
-        this.armi = armi;
+    public void setstileDiCombattimento(String stileDiCombattimento) {
+        this.stileDiCombattimento = stileDiCombattimento;
     }
 
-    public String getVelocita() {
+    public double getVelocita() {
         return velocita;
     }
 
-    public void setVelocita(String velocita) {
+    public void setVelocita(double velocita) {
         this.velocita = velocita;
     }
 
@@ -159,11 +159,19 @@ public class Robot {
                 ", materiale=" + materiale + 
                 ", peso=" + peso + 
                 ", altezza=" + altezza + 
-                ", armi=" + armi + 
+                ", stileDiCombattimento=" + stileDiCombattimento + 
                 ", velocita=" + velocita + 
                 ", punteggioRobot=" + punteggioRobot + 
                 ", teamRobotica=" + teamRobotica + 
                 ", tornei=" + tornei + "]";
+    }
+
+    public String getStileDiCombattimento() {
+        return stileDiCombattimento;
+    }
+
+    public void setStileDiCombattimento(String stileDiCombattimento) {
+        this.stileDiCombattimento = stileDiCombattimento;
     }
 
     
