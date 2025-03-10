@@ -12,7 +12,7 @@ public class RobotService {
     @Autowired
     private RobotRepo robotRepo;
 
-    public List<Robot> getAllRobots() {
+    public List<Robot> findAll() {
         return robotRepo.findAll();
     }
 
@@ -63,4 +63,5 @@ public class RobotService {
     public List<Robot> getRobotsByTeamRoboticaId(Long teamRoboticaId) {
         return robotRepo.findByTeamRoboticaId(teamRoboticaId);
     }
+
 }

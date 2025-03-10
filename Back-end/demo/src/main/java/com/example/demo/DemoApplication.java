@@ -41,7 +41,7 @@ public class DemoApplication {
 
 			// Torneo west
 			Torneo torneoWest = new Torneo("Western Robotics Showdown", "01-08-2024", "31-06-2025", "West");
-			Torneo torneoEast = new Torneo("Eastern Mech MadneCC", "01-08-2024", "31-06-2025", "East");
+			Torneo torneoEast = new Torneo("Eastern Mech Madness", "01-08-2024", "31-06-2025", "East");
 			Torneo torneoGlobal = new Torneo("Ultimate Robot Rumble", "01-07-2025", "31-09-2025", "Global");
 			torneoRepo.saveAll(Arrays.asList(torneoWest, torneoEast, torneoGlobal));
 

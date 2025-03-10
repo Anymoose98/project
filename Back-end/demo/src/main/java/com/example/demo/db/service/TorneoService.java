@@ -12,7 +12,7 @@ public class TorneoService {
     @Autowired
     private TorneoRepo torneoRepo;
 
-    public List<Torneo> getAllTornei() {
+    public List<Torneo> findAll() {
         return torneoRepo.findAll();
     }
 
@@ -43,4 +43,6 @@ public class TorneoService {
     public List<Torneo> getTorneiByGeografica(String geografica) {
         return torneoRepo.findByGeografica(geografica);
     }
+
+
 }
