@@ -23,7 +23,7 @@ public class TeamRobotica {
     private int torneiVinti;
 
     @OneToMany(mappedBy = "teamRobotica")
-    @JsonBackReference
+    //@JsonBackReference
     private List<Robot> robot;
 
     public TeamRobotica() {

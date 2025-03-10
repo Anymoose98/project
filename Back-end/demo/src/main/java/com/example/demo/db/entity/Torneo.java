@@ -29,7 +29,7 @@ public class Torneo {
     private String geografica;
 
     @ManyToMany(mappedBy = "tornei")
-    @JsonBackReference
+    //@JsonBackReference
     private List<Robot> robot;
 
     public Torneo() {

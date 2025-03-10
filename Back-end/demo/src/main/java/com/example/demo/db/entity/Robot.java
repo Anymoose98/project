@@ -34,24 +34,16 @@ public class Robot {
     private int punteggioRobot;
 
     @ManyToOne
-    @JsonBackReference
+    //@JsonBackReference
     @JoinColumn(name = "team_robotica_id")
     private TeamRobotica teamRobotica;
 
     @ManyToMany
-    @JsonBackReference
+    
     private List<Torneo> tornei;
 
     public Robot() {
 
-        this.nome = "";
-        this.modello = "";
-        this.materiale = "";
-        this.peso = 0.0;
-        this.altezza = 0.0;
-        this.stileDiCombattimento = "";
-        this.velocita = 0.0;
-        this.punteggioRobot = 0;
     }
 
     public Robot(String nome, String modello, String materiale, double peso, double altezza,
