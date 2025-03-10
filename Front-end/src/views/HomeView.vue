@@ -13,7 +13,7 @@
       <div class="row">
         <!-- Titolo -->
         <div class="col-12 mt-5 mb-3">
-          <h1 class="text-center">Le ultime news</h1>
+          <h1 class="text-center text-warning">Le ultime news</h1>
         </div>
 
         <!-- Inizio carosello -->
@@ -67,7 +67,7 @@
 
         <!-- Titolo 2 -->
         <div class="col-12">
-          <h1 class="text-center yellow mt-5 mb-3">I prossimi tornei</h1>
+          <h1 class="text-center text-warning mt-5 mb-3">I prossimi tornei</h1>
         </div>
 
         <!-- Paragrafo tornei -->

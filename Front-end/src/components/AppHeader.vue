@@ -10,9 +10,9 @@
         <div class="col-6">
           <nav>
             <ol class="d-flex justify-content-around">
-              <li><router-link to="/">Robot</router-link></li>
-              <li><router-link to="/about">Team</router-link></li>
-              <li><router-link to="#">Tornei</router-link></li>
+              <li><router-link class="text-warning" to="/about">Team</router-link></li>
+              <li><router-link class="text-warning" to="/">Home</router-link></li>
+              <li><router-link class="text-warning" to="#">Tornei</router-link></li>
             </ol>
           </nav>
         </div>
@@ -29,8 +29,8 @@
 header {
   max-width: 100%;
   height: 100px;
-  background-color: #282c2f;
-  color: white;
+  background-color: #000000;
+  
  
 }
 #logo {
