@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.example.demo.db.entity.Robot;
 import com.example.demo.db.entity.Torneo;
 import com.example.demo.db.service.TorneoService;
 
@@ -30,6 +31,16 @@ public class ControllerTorneo {
         return ResponseEntity.ok(Tournaments);
     }
 
+     @GetMapping("/{id}")
+    public ResponseEntity<Torneo> findById(@PathVariable Long id) {
+        Torneo torneo = torneoService.getTorneoById(id);
+        if (torneo != null) {
+            return ResponseEntity.ok(torneo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
+    
 
 }

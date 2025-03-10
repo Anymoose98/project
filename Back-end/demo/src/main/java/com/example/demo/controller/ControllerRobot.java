@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,15 @@ public class ControllerRobot {
         return ResponseEntity.ok(Robots);
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Robot> findById(@PathVariable Long id) {
+        Robot robot = robotService.getRobotById(id);
+        if (robot != null) {
+            return ResponseEntity.ok(robot);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 
 }
