@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+
 
 import com.example.demo.db.entity.Robot;
 import com.example.demo.db.entity.TeamRobotica;
@@ -16,15 +16,6 @@ import com.example.demo.db.repo.TeamRoboticaRepo;
 import com.example.demo.db.repo.TorneoRepo;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.demo.db.entity.TeamRobotica")
-@ComponentScan(basePackages = "com.example.demo.db.entity.Robot")
-@ComponentScan(basePackages = "com.example.demo.db.entity.Torneo")
-@ComponentScan(basePackages = "com.example.demo.db.repo.RobotRepo")
-@ComponentScan(basePackages = "com.example.demo.db.repo.TorneoRepo")
-@ComponentScan(basePackages = "com.example.demo.db.repo.TeamRoboticaRepo")
-@ComponentScan(basePackages = "com.example.demo.db.service.TeamRoboticaService")
-@ComponentScan(basePackages = "com.example.demo.db.service.RobotService")
-@ComponentScan(basePackages = "com.example.demo.db.service.TorneoService")
 public class DemoApplication {
 
 	public static void main(String[] args) {

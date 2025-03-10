@@ -2,6 +2,8 @@ package com.example.demo.db.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ public class Torneo {
     private String geografica;
 
     @ManyToMany(mappedBy = "tornei")
+    @JsonBackReference
     private List<Robot> robot;
 
     public Torneo() {

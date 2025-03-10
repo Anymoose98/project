@@ -2,6 +2,8 @@ package com.example.demo.db.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +23,7 @@ public class TeamRobotica {
     private int torneiVinti;
 
     @OneToMany(mappedBy = "teamRobotica")
+    @JsonBackReference
     private List<Robot> robot;
 
     public TeamRobotica() {

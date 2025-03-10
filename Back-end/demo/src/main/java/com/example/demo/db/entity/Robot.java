@@ -1,7 +1,8 @@
 package com.example.demo.db.entity;
 
-
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,10 +34,12 @@ public class Robot {
     private int punteggioRobot;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "team_robotica_id")
     private TeamRobotica teamRobotica;
 
     @ManyToMany
+    @JsonBackReference
     private List<Torneo> tornei;
 
     public Robot() {
@@ -51,7 +54,8 @@ public class Robot {
         this.punteggioRobot = 0;
     }
 
-    public Robot(String nome, String modello, String materiale, double peso, double altezza, String stileDiCombattimento, double velocita, int punteggioRobot) {
+    public Robot(String nome, String modello, String materiale, double peso, double altezza,
+            String stileDiCombattimento, double velocita, int punteggioRobot) {
 
         this.nome = nome;
         this.modello = modello;
@@ -111,11 +115,11 @@ public class Robot {
         this.altezza = altezza;
     }
 
-    public String getstileDiCombattimento() {
+    public String getStileDiCombattimento() {
         return stileDiCombattimento;
     }
 
-    public void setstileDiCombattimento(String stileDiCombattimento) {
+    public void setStileDiCombattimento(String stileDiCombattimento) {
         this.stileDiCombattimento = stileDiCombattimento;
     }
 
@@ -153,26 +157,17 @@ public class Robot {
 
     @Override
     public String toString() {
-        return "Robot [id=" + id + 
-                ", nome=" + nome + 
-                ", modello=" + modello + 
-                ", materiale=" + materiale + 
-                ", peso=" + peso + 
-                ", altezza=" + altezza + 
-                ", stileDiCombattimento=" + stileDiCombattimento + 
-                ", velocita=" + velocita + 
-                ", punteggioRobot=" + punteggioRobot + 
-                ", teamRobotica=" + teamRobotica + 
+        return "Robot [id=" + id +
+                ", nome=" + nome +
+                ", modello=" + modello +
+                ", materiale=" + materiale +
+                ", peso=" + peso +
+                ", altezza=" + altezza +
+                ", stileDiCombattimento=" + stileDiCombattimento +
+                ", velocita=" + velocita +
+                ", punteggioRobot=" + punteggioRobot +
+                ", teamRobotica=" + teamRobotica +
                 ", tornei=" + tornei + "]";
     }
 
-    public String getStileDiCombattimento() {
-        return stileDiCombattimento;
-    }
-
-    public void setStileDiCombattimento(String stileDiCombattimento) {
-        this.stileDiCombattimento = stileDiCombattimento;
-    }
-
-    
 }
