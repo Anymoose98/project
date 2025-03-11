@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.example.demo.db.entity.Robot;
+import com.example.demo.db.entity.TeamRobotica;
 
 @Repository
 public interface RobotRepo extends JpaRepository<Robot, Long> {
@@ -24,5 +25,7 @@ public interface RobotRepo extends JpaRepository<Robot, Long> {
     
     List<Robot> findByPunteggioRobot(int punteggioRobot);
     
-    List<Robot> findByTeamRoboticaId(Long teamRoboticaId);
+    List<Robot> findByTeamRobotica(TeamRobotica teamRobotica);
+
+    List<Robot> findByTeamRobotica_Id(Long teamRoboticaId);
 }

@@ -3,6 +3,8 @@ package com.example.demo.db.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,8 +24,9 @@ public class TeamRobotica {
     private int punteggioTeam;
     private int torneiVinti;
 
+   
     @OneToMany(mappedBy = "teamRobotica")
-    //@JsonBackReference
+    @JsonIgnore
     private List<Robot> robot;
 
     public TeamRobotica() {

@@ -3,6 +3,7 @@ package com.example.demo.db.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Robot {
@@ -34,21 +36,24 @@ public class Robot {
     private int punteggioRobot;
 
     @ManyToOne
-    //@JsonBackReference
+    @JsonIgnore
     @JoinColumn(name = "team_robotica_id")
     private TeamRobotica teamRobotica;
 
     @ManyToMany
-    
     private List<Torneo> tornei;
 
-    public Robot() {
+    // Campi aggiuntivi per gli ID (senza relazioni JPA dirette)
+    @Transient
+    private Long teamRoboticaId;
 
-    }
+    @Transient
+    private List<Long> torneiIds;
+
+    public Robot() {}
 
     public Robot(String nome, String modello, String materiale, double peso, double altezza,
-            String stileDiCombattimento, double velocita, int punteggioRobot) {
-
+                 String stileDiCombattimento, double velocita, int punteggioRobot) {
         this.nome = nome;
         this.modello = modello;
         this.materiale = materiale;
@@ -57,6 +62,23 @@ public class Robot {
         this.stileDiCombattimento = stileDiCombattimento;
         this.velocita = velocita;
         this.punteggioRobot = punteggioRobot;
+    }
+
+    // Getters e Setters per gli ID separati
+    public Long getTeamRoboticaId() {
+        return teamRoboticaId;
+    }
+
+    public void setTeamRoboticaId(Long teamRoboticaId) {
+        this.teamRoboticaId = teamRoboticaId;
+    }
+
+    public List<Long> getTorneiIds() {
+        return torneiIds;
+    }
+
+    public void setTorneiIds(List<Long> torneiIds) {
+        this.torneiIds = torneiIds;
     }
 
     public Long getId() {

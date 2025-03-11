@@ -4,13 +4,25 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.db.entity.Robot;
+import com.example.demo.db.entity.TeamRobotica;
+import com.example.demo.db.entity.Torneo;
 import com.example.demo.db.repo.RobotRepo;
+import com.example.demo.db.repo.TorneoRepo;
+import com.example.demo.db.repo.TeamRoboticaRepo;
 
 @Service
 public class RobotService {
 
+    private final RobotRepo robotRepo;
+    private final TorneoRepo torneoRepo;
+    private final TeamRoboticaRepo teamRoboticaRepo;
+
     @Autowired
-    private RobotRepo robotRepo;
+    public RobotService(RobotRepo robotRepo, TorneoRepo torneoRepo, TeamRoboticaRepo teamRoboticaRepo) {
+        this.robotRepo = robotRepo;
+        this.torneoRepo = torneoRepo;
+        this.teamRoboticaRepo = teamRoboticaRepo;
+    }
 
     public List<Robot> findAll() {
         return robotRepo.findAll();
@@ -21,6 +33,16 @@ public class RobotService {
     }
 
     public Robot saveRobot(Robot robot) {
+        if (robot.getTeamRoboticaId() != null) {
+            TeamRobotica team = teamRoboticaRepo.findById(robot.getTeamRoboticaId()).orElse(null);
+            robot.setTeamRobotica(team);
+        }
+
+        if (robot.getTorneiIds() != null && !robot.getTorneiIds().isEmpty()) {
+            List<Torneo> tornei = torneoRepo.findAllById(robot.getTorneiIds());
+            robot.setTornei(tornei);
+        }
+
         return robotRepo.save(robot);
     }
 
@@ -61,7 +83,6 @@ public class RobotService {
     }
 
     public List<Robot> getRobotsByTeamRoboticaId(Long teamRoboticaId) {
-        return robotRepo.findByTeamRoboticaId(teamRoboticaId);
+        return robotRepo.findByTeamRobotica_Id(teamRoboticaId); // Metodo corretto nel repository
     }
-
 }

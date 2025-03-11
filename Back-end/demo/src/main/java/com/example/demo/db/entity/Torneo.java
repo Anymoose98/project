@@ -3,6 +3,8 @@ package com.example.demo.db.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,8 +30,9 @@ public class Torneo {
 
     private String geografica;
 
+
     @ManyToMany(mappedBy = "tornei")
-    //@JsonBackReference
+    @JsonIgnore
     private List<Robot> robot;
 
     public Torneo() {
