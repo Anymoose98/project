@@ -3,17 +3,17 @@ import axios from "axios";
 export default {
   data() {
     return {
-      teams: [],
+      tornei: [],
     };
   },
   mounted() {
-    this.chiamatateam();
+    this.chiamatatornei();
   },
   methods: {
-    chiamatateam() {
-      axios.get("http://localhost:8080/teams").then((response) => {
+    chiamatatornei() {
+      axios.get("http://localhost:8080/tornei").then((response) => {
         console.log(response.data);
-        this.teams = response.data;
+        this.tornei = response.data;
       });
     },
   },
@@ -23,7 +23,7 @@ export default {
   <main>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-4 my-4" v-for="team in teams" :key="team.id">
+        <div class="col-md-4 my-4" v-for="torneo in tornei" :key="tornei.id">
 
           <div class="card shadow-sm team-card">
             
@@ -34,15 +34,15 @@ export default {
             />
             <div class="card-body">
               <div class="background-overlay"></div>
-              <h5 class="card-title">{{ team.nome }}</h5>
+              <h5 class="card-title">{{ torneo.nome }}</h5>
               <p class="card-text">
-                <strong>Membri: </strong>{{ team.membri }}
+                <strong>Data Inizio: </strong>{{ torneo.dataInizio }}
               </p>
               <p class="card-text">
-                <strong>punteggio team: </strong>{{ team.punteggioTeam }}
+                <strong>Data fine: </strong>{{ torneo.dataFine }}
               </p>
               <p class="card-text">
-                <strong>tornei vinti: </strong>{{ team.torneiVinti }}
+                <strong>Luogo: </strong>{{ torneo.geografica }}
               </p>
             </div>
           </div>
