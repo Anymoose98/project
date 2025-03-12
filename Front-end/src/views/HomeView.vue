@@ -12,7 +12,6 @@ export default {
   methods: {
     chiamatarobots() {
       axios.get("http://localhost:8080/robots").then((response) => {
-        console.log(response.data);
         this.robots = response.data;
       });
     },
@@ -30,7 +29,7 @@ export default {
         <div class="tech-arena">
           <div class="dark-circuit"></div>
           <div class="arena-content">
-            <h1 class="neon-title">Galleria Robotica</h1>
+            <h1 class="neon-title"> GALLERIA ROBOTICA </h1>
             <div class="robot-grid">
               <div class="mech-card" v-for="robot in robots" :key="robot.id">
                 <router-link class="text-warning" :to='"/"+robot.id'>
@@ -190,14 +189,13 @@ export default {
 
 <style scoped>
 .tech-arena {
-  position: relative;
   min-height: 100vh;
   background-image: url('https://via.placeholder.com/1920x1080'); 
   background-position: center;
   overflow: hidden;
 }
 
-.dark-circuit {
+/* .dark-circuit {
   position: absolute;
   top: 0;
   left: 0;
@@ -206,8 +204,8 @@ export default {
   background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(0, 0, 0, 0.9)); 
   z-index: 1;
   opacity: 0.85;
-}
-
+} */
+ 
 .arena-content {
   position: relative;
   z-index: 2;
@@ -387,5 +385,10 @@ p {
   font-size: 1.2rem;
   margin-top: 20px;
   text-shadow: 0 0 5px #ff5555;
+}
+
+a {
+  text-decoration: none;
+  color: yellow;
 }
 </style>

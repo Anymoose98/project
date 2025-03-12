@@ -13,7 +13,7 @@ export default {
     chiamatarobot() {
         const robotId= this.$route.params.id;
       axios.get(`http://localhost:8080/robots/${robotId}`).then((response) => {
-        console.log(response.data);
+
         this.robot = response.data;
       });
     },

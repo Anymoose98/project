@@ -10,7 +10,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path:'/:id',name:'showRobot',
+      path:'/:id',name:'RobotShow',
       component:()=>import('../views/RobotShow.vue')
     },
     {
@@ -22,6 +22,10 @@ const router = createRouter({
       path: '/tornei',
       name: 'tornei',
       component: () => import('../views/TorneiView.vue'),
+    },
+    {
+      path:'/tornei/:id',name:'TorneoShow',
+      component:()=>import('../views/TorneoShow.vue')
     },
   ],
 })

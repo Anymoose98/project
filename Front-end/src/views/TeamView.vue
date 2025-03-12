@@ -23,6 +23,7 @@ export default {
   <main>
     <div class="container">
       <div class="row justify-content-center">
+        <h1 class="neon-title mt-5 col-12 text-center">TEAM</h1>
         <div class="col-md-4 my-4" v-for="team in teams" :key="team.id">
 
           <div class="card shadow-sm team-card">
@@ -90,5 +91,12 @@ h5{
 .team-image {
   height: 200px;
   object-fit: cover;
+}
+.neon-title {
+  font-family: 'Orbitron', sans-serif; 
+  font-size: 2.8rem;
+  color: #2bff00; 
+  text-shadow: 0 0 10px #2bff00, 0 0 20px #2bff00, 0 0 40px #2bff00;
+  margin-bottom: 30px;
 }
 </style>
