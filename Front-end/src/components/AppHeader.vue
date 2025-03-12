@@ -10,8 +10,9 @@
         <div class="col-6">
           <nav>
             <ol class="d-flex justify-content-around">
-              <li><router-link class="text-warning" to="/team">Team</router-link></li>
               <li><router-link class="text-warning" to="/">Home</router-link></li>
+              <li><router-link class="text-warning" to="/robot">Robot</router-link></li>
+              <li><router-link class="text-warning" to="/team">Team</router-link></li>
               <li><router-link class="text-warning" to="/tornei">Tornei</router-link></li>
             </ol>
           </nav>
@@ -25,28 +26,31 @@
 </template>
 
 <style scoped>
-
 header {
   max-width: 100%;
   height: 100px;
   background-color: #000000;
-  
- 
+
+
 }
+
 #logo {
   width: 150px;
   height: auto;
   transition: trasform 1s ease;
   display: inline-block;
 }
+
 #logo:hover {
   transform: scale(1.5);
-  
+
 }
+
 ol {
   list-style: none;
   color: black;
 }
+
 a {
   text-decoration: none;
   color: white;
@@ -55,10 +59,12 @@ a {
   transition: trasform 1s ease;
   display: inline-block;
 }
+
 a:hover {
   color: #e9e6dc;
   transform: scale(1.5);
 }
+
 img {
   width: 60px;
   height: auto;

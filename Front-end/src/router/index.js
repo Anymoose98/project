@@ -10,13 +10,22 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path:'/:id',name:'RobotShow',
+      path: '/robot',
+      name: 'robot',
+      component: () => import('../views/RobotView.vue'),
+    },
+    {
+      path:'/robot/:id',name:'RobotShow',
       component:()=>import('../views/RobotShow.vue')
     },
     {
       path: '/team',
       name: 'team',
       component: () => import('../views/TeamView.vue'),
+    },
+    {
+      path:'/team/:id',name:'TeamShow',
+      component:()=>import('../views/TeamShow.vue')
     },
     {
       path: '/tornei',

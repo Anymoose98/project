@@ -16,6 +16,9 @@ export default {
         this.tornei = response.data;
       });
     },
+    created() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
@@ -88,9 +91,9 @@ h5 {
 }
 
 .neon-title {
-  font-family: 'Orbitron', sans-serif; 
+  font-family: 'Orbitron', sans-serif;
   font-size: 2.8rem;
-  color: #ff0000; 
+  color: #ff0000;
   text-shadow: 0 0 10px #590000, 0 0 20px #590000, 0 0 40px #590000;
   margin-bottom: 30px;
 }
@@ -116,6 +119,7 @@ h5 {
   height: 200px;
   object-fit: cover;
 }
+
 a {
   text-decoration: none;
   color: yellow;

@@ -17,23 +17,25 @@ export default {
                 this.torneo = response.data;
             });
         },
-
+        created() {
+            window.scrollTo(0, 0);
+        },
     },
 };
 </script>
 <template>
-    <main>
-
+    <main class="py-4">
+        
 
 
         <div class="tournament-showcase">
             <div class="circuit-overlay"></div>
             <div class="showdown-content">
+                
                 <h1 class="showdown-title"> Torneo </h1>
                 <div class="tournament-card">
                     <div class="card-header">
-                        <img src="../../public/western-robot-banner.jpg" alt="Western Robotics Banner"
-                            class="banner-img" />
+                        <img src="../../public/2.jpeg" alt="Western Robotics Banner" class="banner-img" />
                     </div>
                     <div class="card-body">
                         <h2 class="tournament-name">{{ torneo.nome }}</h2>
@@ -45,11 +47,15 @@ export default {
                             <span class="label">Regione:</span> {{ torneo.geografica }}
                         </p>
                         <div class="tournament-details">
-                            <p class="detail-text">Saddle up for the ultimate robotic duel in the West!</p>
-                            <button class="join-btn">Partecipa Ora</button>
+                            <p class="detail-text">Ecco l'alba di una nuova era: le macchine titaniche si sfidano nei
+                                tornei di combattimenti tra robot! 🤖🔥</p>
                         </div>
+
                     </div>
                 </div>
+                <router-link class="text-warning" to="/tornei">
+                    <button class="join-btn">Torna ai tornei</button>
+                </router-link>
             </div>
         </div>
     </main>
@@ -110,7 +116,7 @@ tournament-showcase {
 
 .banner-img {
     width: 100%;
-    height: 200px;
+    height: auto;
     object-fit: cover;
     border-bottom: 2px solid #ff4500;
 }

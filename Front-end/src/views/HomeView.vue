@@ -15,54 +15,18 @@ export default {
         this.robots = response.data;
       });
     },
+    created() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
 
 <template>
   <main>
-    <!-- Card Robot-->
-    <div class="container">
-      <div class="row justify-content-center">
-        <!-- Card per ogni robot -->
 
-        <div class="tech-arena">
-          <div class="dark-circuit"></div>
-          <div class="arena-content">
-            <h1 class="neon-title"> GALLERIA ROBOTICA </h1>
-            <div class="robot-grid">
-              <div class="mech-card" v-for="robot in robots" :key="robot.id">
-                <router-link class="text-warning" :to='"/"+robot.id'>
-                  <div class="mech-plate">
-                  <img
-                    src="../../public/robot-prova.jpg"
-                    alt="Robot"
-                    class="mech-avatar"
-                  />
-                  <h2 class="mech-name">{{ robot.nome }}</h2>
-                  <p class="mech-spec">Modello: {{ robot.modello }}</p>
-                  <div class="mech-stats">
-                    <p class="stat-line">
-                      Peso: <span class="stat-value">{{ robot.peso }} kg</span>
-                    </p>
-                    <p class="stat-line">
-                      Velocità:
-                      <span class="stat-value">{{ robot.velocita }} m/s</span>
-                    </p>
-                    <p class="stat-line">
-                      Punteggio:
-                      <span class="stat-value">{{ robot.punteggioRobot }}</span>
-                    </p>
-                  </div>
-                </div>
-                </router-link>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
 
     <div class="container">
       <div class="row">
@@ -72,41 +36,18 @@ export default {
         </div>
 
         <!-- Inizio carosello -->
-        <div
-          id="carouselExampleCaptions"
-          class="carousel slide"
-          data-bs-ride="carousel"
-          data-bs-interval="5000"
-        >
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
           <div class="carousel-indicators">
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="0"
-              class="active"
-              aria-current="true"
-              aria-label="Slide 1"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="1"
-              aria-label="Slide 2"
-            ></button>
-            <button
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="2"
-              aria-label="Slide 3"
-            ></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                src="../../public/slide-1.png"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img src="../../public/slide-1.png" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h1>Nebula Knight</h1>
                 <p>
@@ -116,11 +57,7 @@ export default {
               </div>
             </div>
             <div class="carousel-item">
-              <img
-                src="../../public/slide-2.png"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img src="../../public/slide-2.png" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block">
                 <h1 class="yellow ombra">Galactic Guardians</h1>
                 <p class="ombra">
@@ -130,29 +67,17 @@ export default {
               </div>
             </div>
             <div class="carousel-item">
-              <img
-                src="../../public/slide-3.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img src="../../public/slide-3.jpg" class="d-block w-100" alt="..." />
               <div class="carousel-caption d-none d-md-block"></div>
             </div>
           </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev"
-          >
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next"
-          >
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -180,8 +105,8 @@ export default {
           </div>
         </div>
         <div class="col-50">
-          <img src="../../public/robot-viola.jpg" alt="" class="robot-viola"
-        /></div>
+          <img src="../../public/robot-viola.jpg" alt="" class="robot-viola" />
+        </div>
       </div>
     </div>
   </main>
@@ -190,7 +115,7 @@ export default {
 <style scoped>
 .tech-arena {
   min-height: 100vh;
-  background-image: url('https://via.placeholder.com/1920x1080'); 
+  background-image: url('https://via.placeholder.com/1920x1080');
   background-position: center;
   overflow: hidden;
 }
@@ -205,7 +130,7 @@ export default {
   z-index: 1;
   opacity: 0.85;
 } */
- 
+
 .arena-content {
   position: relative;
   z-index: 2;
@@ -214,9 +139,9 @@ export default {
 }
 
 .neon-title {
-  font-family: 'Orbitron', sans-serif; 
+  font-family: 'Orbitron', sans-serif;
   font-size: 2.8rem;
-  color: #00ffcc; 
+  color: #00ffcc;
   text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
   margin-bottom: 30px;
 }
@@ -301,21 +226,22 @@ p {
   height: auto;
   object-fit: cover;
 }
+
 .mech-card {
   position: relative;
   width: 260px;
   height: 380px;
-  background: linear-gradient(145deg, #0d1b2a, #1b263b); 
-  border: 2px solid #00ffcc; 
+  background: linear-gradient(145deg, #0d1b2a, #1b263b);
+  border: 2px solid #00ffcc;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.2); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.2);
   transition: all 0.4s ease;
 }
 
 .mech-card:hover {
-  transform: scale(1.05) rotate(1deg); 
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 255, 204, 0.4); 
-  border-color: #ff007a; 
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 255, 204, 0.4);
+  border-color: #ff007a;
 }
 
 .mech-plate {
@@ -324,7 +250,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #e0e0e0; 
+  color: #e0e0e0;
 }
 
 .mech-avatar {
@@ -332,7 +258,7 @@ p {
   height: 160px;
   object-fit: cover;
   border-radius: 8px;
-  border: 3px solid #ff007a; 
+  border: 3px solid #ff007a;
   box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
 }
 
@@ -348,9 +274,10 @@ p {
 .mech-spec {
   font-size: 1rem;
   font-style: italic;
-  color: #ff007a; 
+  color: #ff007a;
   margin-bottom: 10px;
 }
+
 .mech-stats {
   background: rgba(255, 255, 255, 0.05);
   padding: 10px;
@@ -381,7 +308,7 @@ p {
 }
 
 .error-signal {
-  color: #ff5555; 
+  color: #ff5555;
   font-size: 1.2rem;
   margin-top: 20px;
   text-shadow: 0 0 5px #ff5555;

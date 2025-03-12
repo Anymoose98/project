@@ -34,6 +34,7 @@ public class Robot {
     private String stileDiCombattimento;
     private double velocita;
     private int punteggioRobot;
+    
 
     @ManyToOne
     @JsonIgnore
