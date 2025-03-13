@@ -19,6 +19,10 @@ const router = createRouter({
       component:()=>import('../views/RobotShow.vue')
     },
     {
+      path: '/robot/add',
+      component: () => import('../views/RobotAdd.vue'),
+    },
+    {
       path: '/team',
       name: 'team',
       component: () => import('../views/TeamView.vue'),

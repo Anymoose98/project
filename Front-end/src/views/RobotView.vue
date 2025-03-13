@@ -30,7 +30,11 @@ export default {
 
 
         <div class="container position-relative">
-            <button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button>
+            <router-link class="text-warning" to="/robot/add">
+                <button class="add-button position-absolute ">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </router-link>
             <div class="row justify-content-center">
                 <!-- Card per ogni robot -->
                 <div class="tech-arena">
