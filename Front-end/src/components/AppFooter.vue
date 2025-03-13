@@ -101,6 +101,7 @@
 <style scoped>
 a {
   color: white;
+  text-decoration: none;
 }
 hr {
   border: 3px solid white;

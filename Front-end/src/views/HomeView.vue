@@ -81,7 +81,7 @@ export default {
         </div>
 
         <!-- Paragrafo tornei -->
-        <div class="col-50 d-flex flex-column">
+        <div class="col-50 d-flex flex-column mb-5">
           <div class="col-laterale">
             <!-- <span class="data-torneo">01/07/2025 - 31/09/2025</span> -->
             <img src="../../public/1.jpeg" alt="" class="img-laterali" />
@@ -95,7 +95,7 @@ export default {
             <img src="../../public/3.jpeg" alt="" class="img-laterali" />
           </div>
         </div>
-        <div class="col-50">
+        <div class="col-50 mb-5 ">
           <img src="../../public/robot-viola.jpg" alt="" class="robot-viola" />
         </div>
       </div>
@@ -111,16 +111,7 @@ export default {
   overflow: hidden;
 }
 
-/* .dark-circuit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(0, 0, 0, 0.9)); 
-  z-index: 1;
-  opacity: 0.85;
-} */
+
 
 .arena-content {
   position: relative;
