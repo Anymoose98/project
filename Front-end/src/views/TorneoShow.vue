@@ -19,7 +19,7 @@ export default {
             });
         },
         async deleteTorneo() {
-            const teamId = this.$route.params.id;
+            const torneoId = this.$route.params.id;
             try {
                 // Send DELETE request to the API
 

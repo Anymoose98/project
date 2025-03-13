@@ -155,7 +155,7 @@ export default {
                                 <div class="px-2 d-flex flex-wrap justify-content-around">
                                     <div v-for="torneo in tornei" :key="torneo.id" class="form-check col-6">
                                         <input v-model="robot.torneiIds" class="form-check-input" type="checkbox"
-                                            :value="torneo.id" :id="torneo.id" required>
+                                            :value="torneo.id" :id="torneo.id">
                                         <label class="form-check-label" :for="torneo.id">
                                             {{ torneo.nome }}
                                         </label>

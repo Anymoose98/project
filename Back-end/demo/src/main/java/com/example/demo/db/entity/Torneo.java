@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Torneo {
     private String geografica;
 
 
-    @ManyToMany(mappedBy = "tornei")
+    @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Robot> robot;
 
