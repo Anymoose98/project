@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
 }
+
 main {
     background-image: url('../../public/sfondo-principale.jpg');
     width: 100%;
     background-repeat: repeat;
-position: relative;
+    position: relative;
 }
-    

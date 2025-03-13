@@ -50,51 +50,50 @@ export default {
 
 </script>
 <template>
-  <main class="py-4 tech-arena">
+  <main class="">
+    <div class="tech-arena py-4">
 
-
-    <div class="dark-circuit"></div>
-    <div class="arena-content">
-      <div class="d-flex justify-content-between align-items-center">
-        <button class="delete-button ms-5" @click = deleteRobot><i class="fa-solid fa-trash-can"></i></button>
-        <h1 class="neon-title">Dettagli Robot</h1>
-        <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
-      </div>
-      <div class="robot-display" v-if="robot">
-        <div class="mech-card">
-          <div class="mech-plate">
-            <img src="../../public/robot-prova.jpg" alt="Robot" class="mech-avatar" />
-            <h2 class="mech-name">{{ robot.nome }}</h2>
-            <p class="mech-spec">Modello: {{ robot.modello }}</p>
-            <!-- /<p class="mech-spec">Materiale: {{ robot.materiale }}</p> -->
-            <div class="mech-stats">
-              <p class="stat-line">Peso: <span class="stat-value">{{ robot.peso }} kg</span></p>
-              <p class="stat-line">Velocità: <span class="stat-value">{{ robot.velocita }} m/s</span></p>
-              <p class="stat-line">Altezza: <span class="stat-value">{{ robot.altezza }} m</span></p>
-              <p class="stat-line">Stile Combattimento: <span class="stat-value">{{ robot.stileDiCombattimento
-              }}</span></p>
-              <p class="stat-line">Punteggio: <span class="stat-value">{{ robot.punteggioRobot }}</span></p>
-              <p class="stat-line">Team: <span class="stat-value">{{ robot.teamRobotica ? robot.teamRobotica.nome :
-                'N/A' }}</span></p>
-              <p class="stat-line">Tornei: <span class="stat-value">{{robot.tornei ? robot.tornei.map(t =>
-                t.nome).join(', ') : 'Nessuno'}}</span></p>
+      <div class="dark-circuit"></div>
+      <div class="arena-content">
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="delete-button ms-5" @click = deleteRobot><i class="fa-solid fa-trash-can"></i></button>
+          <h1 class="neon-title">Dettagli Robot</h1>
+          <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
+        </div>
+        <div class="robot-display" v-if="robot">
+          <div class="mech-card">
+            <div class="mech-plate">
+              <img src="../../public/robot-prova.jpg" alt="Robot" class="mech-avatar" />
+              <h2 class="mech-name">{{ robot.nome }}</h2>
+              <p class="mech-spec">Modello: {{ robot.modello }}</p>
+              <!-- /<p class="mech-spec">Materiale: {{ robot.materiale }}</p> -->
+              <div class="mech-stats">
+                <p class="stat-line">Peso: <span class="stat-value">{{ robot.peso }} kg</span></p>
+                <p class="stat-line">Velocità: <span class="stat-value">{{ robot.velocita }} km/h</span></p>
+                <p class="stat-line">Altezza: <span class="stat-value">{{ robot.altezza }} m</span></p>
+                <p class="stat-line">Stile Combattimento: <span class="stat-value">{{ robot.stileDiCombattimento
+                }}</span></p>
+                <p class="stat-line">Punteggio: <span class="stat-value">{{ robot.punteggioRobot }}</span></p>
+                <p class="stat-line">Team: <span class="stat-value">{{ robot.teamRobotica ? robot.teamRobotica.nome :
+                  'N/A' }}</span></p>
+                <p class="stat-line">Tornei: <span class="stat-value">{{robot.tornei ? robot.tornei.map(t =>
+                  t.nome).join(', ') : 'Nessuno'}}</span></p>
+              </div>
             </div>
           </div>
         </div>
+  
+  
+        <router-link to="/robot" class="back-button">Torna alla Galleria</router-link>
       </div>
-
-
-      <router-link to="/robot" class="back-button">Torna alla Galleria</router-link>
     </div>
-
   </main>
 </template>
 <style scoped>
 .tech-arena {
   position: relative;
-
-  /*background-image: url('https://via.placeholder.com/1920x1080'); /* Sostituisci con immagine futuristica */
   background-size: cover;
+  background: url('https://via.placeholder.com/1920x1080') no-repeat center/cover;
   background-position: center;
   overflow: hidden;
 }
@@ -106,7 +105,6 @@ export default {
   width: 100%;
   height: 100%;
   background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(0, 0, 0, 0.9));
-  z-index: 1;
   opacity: 0.85;
 }
 

@@ -102,9 +102,8 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(10, 10, 30, 0.7), rgba(0, 0, 0, 0.9));
+    background: linear-gradient(to bottom, rgba(0, 67, 23, 0.8), rgba(0, 0, 0, 0.9));
     opacity: 0.85;
-
 }
 
 .team-content {

@@ -29,7 +29,7 @@ export default {
       {{ $route.query.message }}
     </div>
     <div class="container position-relative">
-      <button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button>
+      <router-link to="/team/add"> <button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button> </router-link>
       <div class="row justify-content-center">
         <h1 class="neon-title col-12 text-center">TEAM</h1>
         <div class="col-md-4 my-4" v-for="team in teams" :key="team.id">
@@ -118,7 +118,7 @@ a {
 }
 
 .add-button {
-  right: 85px;
+  right: 40px;
   background: #2bff00;
   color: #1a1a2e;
   padding: 10px 20px;

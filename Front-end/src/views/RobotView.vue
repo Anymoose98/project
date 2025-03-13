@@ -83,16 +83,7 @@ export default {
     overflow: hidden;
 }
 
-/* .dark-circuit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(0, 0, 0, 0.9)); 
-  z-index: 1;
-  opacity: 0.85;
-} */
+
 
 .arena-content {
     position: relative;

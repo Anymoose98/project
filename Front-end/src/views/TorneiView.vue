@@ -30,7 +30,7 @@ export default {
     </div>
     <div class="circuit-overlay">
       <div class="container position-relative">
-        <button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button>
+       <routerLink to="/tornei/add" ><button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button> </routerLink>
         <div class="row justify-content-center">
           <h1 class="neon-title col-12 text-center">TORNEI</h1>
           <div class="col-md-4 my-4" v-for="torneo in tornei" :key="tornei.id">
@@ -124,7 +124,7 @@ a {
 }
 
 .add-button {
-  right: 85px;
+  right: 40px;
   background: #ff0000;
   color: #1a1a2e;
   padding: 10px 20px;
