@@ -37,8 +37,6 @@ public class Robot {
     
 
     @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "team_robotica_id")
     private TeamRobotica teamRobotica;
 
     @ManyToMany
