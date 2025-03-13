@@ -1,5 +1,4 @@
 <script>
-import axios from "axios";
 export default {
   data() {
     return {
@@ -7,14 +6,10 @@ export default {
     };
   },
   mounted() {
-    this.chiamatarobots();
+    this.created();
   },
   methods: {
-    chiamatarobots() {
-      axios.get("http://localhost:8080/robots").then((response) => {
-        this.robots = response.data;
-      });
-    },
+
     created() {
       window.scrollTo(0, 0);
     },
@@ -24,10 +19,6 @@ export default {
 
 <template>
   <main>
-
-
-
-
     <div class="container">
       <div class="row">
         <!-- Titolo -->

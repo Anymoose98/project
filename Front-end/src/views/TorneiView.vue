@@ -8,6 +8,7 @@ export default {
   },
   mounted() {
     this.chiamatatornei();
+    this.created();
   },
   methods: {
     chiamatatornei() {
@@ -24,10 +25,14 @@ export default {
 </script>
 <template>
   <main>
+    <div v-if="$route.query.message" class="alert alert-success">
+      {{ $route.query.message }}
+    </div>
     <div class="circuit-overlay">
-      <div class="container">
+      <div class="container position-relative">
+        <button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button>
         <div class="row justify-content-center">
-          <h1 class="neon-title mt-5 col-12 text-center">TORNEI</h1>
+          <h1 class="neon-title col-12 text-center">TORNEI</h1>
           <div class="col-md-4 my-4" v-for="torneo in tornei" :key="tornei.id">
             <router-link class="text-warning" :to='"/tornei/" + torneo.id'>
 
@@ -99,16 +104,9 @@ h5 {
 }
 
 
-/* .circuit-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(34, 19, 0, 0.7), rgba(0, 0, 0, 0.9));
-  opacity: 0.9;
-  z-index: 3;
-} */
+.row {
+  padding: 30px;
+}
 
 
 .team-card:hover {
@@ -123,5 +121,23 @@ h5 {
 a {
   text-decoration: none;
   color: yellow;
+}
+
+.add-button {
+  right: 85px;
+  background: #ff0000;
+  color: #1a1a2e;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 10px #590000;
+  transition: all 0.3s ease;
+  z-index: 3;
+  top: 30px;
+  height: 52px;
 }
 </style>

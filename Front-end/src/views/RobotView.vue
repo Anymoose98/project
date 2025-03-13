@@ -8,6 +8,7 @@ export default {
     },
     mounted() {
         this.chiamatarobots();
+        this.created();
     },
     methods: {
         chiamatarobots() {
@@ -279,8 +280,6 @@ a {
 }
 
 .add-button {
-
-
     right: 85px;
     background: #00ffcc;
     color: #1a1a2e;

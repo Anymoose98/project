@@ -8,6 +8,7 @@ export default {
     },
     mounted() {
         this.chiamatateam();
+        this.created();
     },
     methods: {
         chiamatateam() {
@@ -52,11 +53,11 @@ export default {
             <div class="circuit-overlay"></div>
             <div class="team-content">
                 <div class="d-flex justify-content-between align-items-center">
-                    <button class="delete-button ms-5" @click = deleteTeam><i class="fa-solid fa-trash-can"></i></button>
-                    
+                    <button class="delete-button ms-5" @click=deleteTeam><i class="fa-solid fa-trash-can"></i></button>
+
                     <h1 class="team-section-title">TEAM</h1>
-        <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
-      </div>
+                    <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
+                </div>
                 <div class="team-card">
                     <div class="card-header">
                         <img src="../../public/1.jpeg" alt="Cyber Crushers Banner" class="banner-img" />
@@ -212,34 +213,35 @@ export default {
 }
 
 .delete-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #2bff00;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  border-radius: 15px;
-  font-weight: bold;
-  box-shadow: 0 0 10px #2bff00;
-  transition: all 0.3s ease;
-  position: relative;
-  bottom: 28px;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #2bff00;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 10px #2bff00;
+    transition: all 0.3s ease;
+    position: relative;
+    bottom: 28px;
 }
 
 .customize-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #2bff00;
-  color: #000000;;
-  text-decoration: none;
-  border-radius: 15px;
-  font-weight: bold;
-  box-shadow: 0 0 10px #2bff00;
-  transition: all 0.3s ease;
-  position: relative;
-  right: 48px;
-  bottom: 28px;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #2bff00;
+    color: #000000;
+    ;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 0 10px #2bff00;
+    transition: all 0.3s ease;
+    position: relative;
+    right: 48px;
+    bottom: 28px;
 
 }
 </style>

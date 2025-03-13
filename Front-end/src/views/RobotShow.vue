@@ -9,6 +9,7 @@ export default {
   },
   mounted() {
     this.chiamatarobot();
+    this.created();
   },
   methods: {
     chiamatarobot() {
