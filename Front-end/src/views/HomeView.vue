@@ -20,6 +20,9 @@ export default {
 <template>
   <main>
     <div class="contenitore-principale-iniziale">
+      <div class="contenitore-testo">
+        <h1 class="testo-steel-fight">STEEL FIGHT</h1>
+    </div>
       <img src="../../public/img-iniziale.png" class="img-iniziale" alt="">
     </div>
     <div class="container">
@@ -305,29 +308,72 @@ a {
 }
 
 .contenitore-principale-iniziale {
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  height: calc(100vh - 100px);
-  overflow: hidden; /* Per nascondere l'immagine prima dell'animazione */
+    display: flex;
+    flex-direction: column; /* Modificato per impilare testo e immagine */
+    justify-content: center;
+    align-items: center; /* Centrato orizzontalmente */
+    height: calc(100vh - 100px);
+    overflow: hidden;
+    position: relative;
 }
 
 .img-iniziale {
-  width: 50%;
-  height: auto;
-  animation: slideUp 1s ease-out forwards; /* Nome animazione, durata, easing, stato finale */
+    width: 50%;
+    height: auto;
+    animation: slideUp 3s ease-out forwards;
 }
 
-/* Definizione dell'animazione */
+.contenitore-testo {
+    position: absolute; /* Per sovrapporre il testo all'immagine */
+    z-index: 1; /* Assicura che il testo stia sopra l'immagine */
+}
+
+.testo-steel-fight {
+    font-family: 'Impact', sans-serif; /* Font bold e d'impatto */
+    font-size: 4rem; /* Dimensione grande */
+    color: #fff; /* Bianco come base */
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 10px #ff0000, /* Bagliore rosso */
+        0 0 20px #ff0000,
+        2px 2px 0 #000, /* Ombra nera spostata */
+        -2px -2px 0 #000;
+    letter-spacing: 2px;
+    animation: fadeInGlow 3s ease-out forwards; /* Animazione per il testo */
+}
+
+/* Animazione immagine */
 @keyframes slideUp {
-  0% {
-    transform: translateY(100%); /* Parte dal basso (fuori dal contenitore) */
-    opacity: 0; /* Opzionale: parte invisibile */
-  }
-  100% {
-    transform: translateY(0); /* Arriva alla posizione finale */
-    opacity: 1; /* Opzionale: diventa completamente visibile */
-  }
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animazione testo */
+@keyframes fadeInGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* Parte leggermente più piccolo */
+        text-shadow: none; /* Nessun bagliore all'inizio */
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1); /* Effetto "rimbalzo" */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        text-shadow: 
+            0 0 10px #f6ff00,
+            0 0 20px #f6ff00,
+            2px 2px 0 #000,
+            -2px -2px 0 #000;
+    }
 }
 
 </style>
