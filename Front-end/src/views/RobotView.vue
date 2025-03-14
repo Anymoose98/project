@@ -47,7 +47,7 @@ export default {
                             <div class="mech-card" v-for="robot in robots" :key="robot.id">
                                 <router-link class="text-warning" :to='"/robot/" + robot.id'>
                                     <div class="mech-plate">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgm5atAI2kO90UD6hp53Bn1YVkG4zStEWA8Q&s"
+                                        <img :src="robot.img"
                                             alt="Robot" class="mech-avatar" />
                                         <h2 class="mech-name">{{ robot.nome }}</h2>
                                         <p class="mech-spec">Modello: {{ robot.modello }}</p>
@@ -215,6 +215,7 @@ p {
     border-radius: 8px;
     border: 3px solid #ff007a;
     box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
+    
 }
 
 .mech-name {

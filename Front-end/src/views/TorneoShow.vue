@@ -59,7 +59,7 @@ export default {
                 </div>
                 <div class="tournament-card">
                     <div class="card-header">
-                        <img src="../../public/2.jpeg" alt="Western Robotics Banner" class="banner-img" />
+                        <img :src="tornei.img" alt="Western Robotics Banner" class="banner-img" />
                     </div>
                     <div class="card-body">
                         <h2 class="tournament-name">{{ torneo.nome }}</h2>

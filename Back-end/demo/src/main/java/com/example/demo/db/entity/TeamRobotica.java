@@ -1,11 +1,7 @@
 package com.example.demo.db.entity;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,8 +20,8 @@ public class TeamRobotica {
     private int membri;
     private int punteggioTeam;
     private int torneiVinti;
+    private String img;
 
-   
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Robot> robot;
@@ -33,11 +29,12 @@ public class TeamRobotica {
     public TeamRobotica() {
     }
 
-    public TeamRobotica(String nome, int membri, int punteggioTeam, int torneiVinti) {
+    public TeamRobotica(String nome, int membri, int punteggioTeam, int torneiVinti, String img) {
         this.nome = nome;
         this.membri = membri;
         this.punteggioTeam = punteggioTeam;
         this.torneiVinti = torneiVinti;
+        this.img = img;
     }
 
     public Long getId() {
@@ -88,12 +85,20 @@ public class TeamRobotica {
         this.robot = robot;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
-        return "TeamRobotica [id=" + id + 
-                ", nome=" + nome + 
-                ", membri=" + membri + 
-                ", punteggioTeam=" + punteggioTeam + 
+        return "TeamRobotica [id=" + id +
+                ", nome=" + nome +
+                ", membri=" + membri +
+                ", punteggioTeam=" + punteggioTeam +
                 ", torneiVinti=" + torneiVinti + "]";
     }
 

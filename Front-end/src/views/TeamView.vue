@@ -38,7 +38,7 @@ export default {
 
             <div class="card shadow-sm team-card">
 
-              <img src="../../public/slide-2.png" class="card-img-top team-image" alt="Foto Team" />
+              <img :src="team.img" class="card-img-top team-image" alt="Foto Team" />
               <div class="card-body">
                 <div class="background-overlay"></div>
                 <h5 class="card-title">{{ team.nome }}</h5>

@@ -30,7 +30,8 @@ export default {
     </div>
     <div class="circuit-overlay">
       <div class="container position-relative">
-       <routerLink to="/tornei/add" ><button class="add-button position-absolute "><i class="fa-solid fa-plus"></i></button> </routerLink>
+        <routerLink to="/tornei/add"><button class="add-button position-absolute "><i
+              class="fa-solid fa-plus"></i></button> </routerLink>
         <div class="row justify-content-center">
           <h1 class="neon-title col-12 text-center">TORNEI</h1>
           <div class="col-md-4 my-4" v-for="torneo in tornei" :key="tornei.id">
@@ -38,7 +39,7 @@ export default {
 
               <div class="card shadow-sm team-card">
 
-                <img src="../../public/slide-2.png" class="card-img-top team-image" alt="Foto Team" />
+                <img :src="tornei.img" class="card-img-top team-image" alt="Foto Team" />
                 <div class="card-body">
                   <div class="background-overlay"></div>
                   <h5 class="card-title">{{ torneo.nome }}</h5>

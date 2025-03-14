@@ -63,7 +63,7 @@ export default {
         <div class="robot-display" v-if="robot">
           <div class="mech-card">
             <div class="mech-plate">
-              <img src="../../public/robot-prova.jpg" alt="Robot" class="mech-avatar" />
+              <img :src="robot.img" alt="Robot" class="mech-avatar" />
               <h2 class="mech-name">{{ robot.nome }}</h2>
               <p class="mech-spec">Modello: {{ robot.modello }}</p>
               <!-- /<p class="mech-spec">Materiale: {{ robot.materiale }}</p> -->

@@ -1,11 +1,7 @@
 package com.example.demo.db.entity;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +27,8 @@ public class Torneo {
 
     private String geografica;
 
+    private String img;
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JsonIgnore
@@ -41,13 +39,15 @@ public class Torneo {
         this.dataInizio = "";
         this.dataFine = "";
         this.geografica = "";
+        this.img = "";
     }
 
-    public Torneo(String nome, String dataInizio, String dataFine, String geografica) {
+    public Torneo(String nome, String dataInizio, String dataFine, String geografica, String img) {
         this.nome = nome;
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
         this.geografica = geografica;
+        this.img = img;
     }
 
     public Long getId() {
@@ -96,6 +96,14 @@ public class Torneo {
 
     public void setRobot(List<Robot> robot) {
         this.robot = robot;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override

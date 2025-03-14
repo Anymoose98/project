@@ -27,7 +27,7 @@ public class DemoApplication {
 		return (args) -> {
 
 			// team robotica west
-			TeamRobotica team1 = new TeamRobotica("Titanium Titans", 3, 0, 0);
+			/*TeamRobotica team1 = new TeamRobotica("Titanium Titans", 3, 0, 0);
 			TeamRobotica team2 = new TeamRobotica("Cyber Crushers", 3, 0, 0);
 			TeamRobotica team3 = new TeamRobotica("Metal Marauders", 3, 0, 0);
 			TeamRobotica team4 = new TeamRobotica("Robo Rampagers", 3, 0, 0);
@@ -177,7 +177,7 @@ public class DemoApplication {
 
 			robotRepo.saveAll(Arrays.asList(robot1, robot2, robot3, robot4, robot5, robot6, robot7, robot8, robot9,
 					robot10, robot11, robot12, robot13, robot14, robot15, robot16, robot17, robot18, robot19, robot20,
-					robot21, robot22, robot23, robot24));
+					robot21, robot22, robot23, robot24)); */
 
 		};
 

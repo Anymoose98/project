@@ -1,16 +1,11 @@
 package com.example.demo.db.entity;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Transient;
@@ -34,7 +29,8 @@ public class Robot {
     private String stileDiCombattimento;
     private double velocita;
     private int punteggioRobot;
-    
+    @Column(length = 256)
+    private String img;
 
     @ManyToOne
     private TeamRobotica teamRobotica;
@@ -49,10 +45,11 @@ public class Robot {
     @Transient
     private List<Long> torneiIds;
 
-    public Robot() {}
+    public Robot() {
+    }
 
     public Robot(String nome, String modello, String materiale, double peso, double altezza,
-                 String stileDiCombattimento, double velocita, int punteggioRobot) {
+            String stileDiCombattimento, double velocita, int punteggioRobot, String img) {
         this.nome = nome;
         this.modello = modello;
         this.materiale = materiale;
@@ -61,6 +58,7 @@ public class Robot {
         this.stileDiCombattimento = stileDiCombattimento;
         this.velocita = velocita;
         this.punteggioRobot = punteggioRobot;
+        this.img = img;
     }
 
     // Getters e Setters per gli ID separati
@@ -166,6 +164,14 @@ public class Robot {
 
     public void setTornei(List<Torneo> tornei) {
         this.tornei = tornei;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override

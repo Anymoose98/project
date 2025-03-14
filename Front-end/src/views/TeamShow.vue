@@ -60,7 +60,7 @@ export default {
                 </div>
                 <div class="team-card">
                     <div class="card-header">
-                        <img src="../../public/1.jpeg" alt="Cyber Crushers Banner" class="banner-img" />
+                        <img :src="team.img" alt="Cyber Crushers Banner" class="banner-img" />
                     </div>
                     <div class="card-body">
                         <h2 class="team-name">{{ team.nome }}</h2>
