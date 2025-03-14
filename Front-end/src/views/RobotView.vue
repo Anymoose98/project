@@ -4,6 +4,10 @@ export default {
     data() {
         return {
             robots: [],
+            robot: {
+                img: "percorso_dinamico.jpg" // Qui metti l'URL dinamico dell'immagine
+            },
+            fallbackImg: "../../public/robot-viola.jpg"
         };
     },
     mounted() {
@@ -47,8 +51,8 @@ export default {
                             <div class="mech-card" v-for="robot in robots" :key="robot.id">
                                 <router-link class="text-warning" :to='"/robot/" + robot.id'>
                                     <div class="mech-plate">
-                                        <img :src="robot.img"
-                                            alt="Robot" class="mech-avatar" />
+                                        <img :src="robot.img || fallbackImg" alt="Robot" class="mech-avatar"
+                                            @error="handleError" />
                                         <h2 class="mech-name">{{ robot.nome }}</h2>
                                         <p class="mech-spec">Modello: {{ robot.modello }}</p>
                                         <div class="mech-stats">
@@ -112,14 +116,7 @@ export default {
     height: calc(100vh - 100px);
 }
 
-#gif {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Ritaglia l'immagine per riempire il contenitore */
-    object-position: top;
-    /* Mostra la parte superiore della GIF */
-}
+
 
 .data-torneo {
     position: absolute;
@@ -185,7 +182,7 @@ p {
 .mech-card {
     position: relative;
     width: 260px;
-    height: 380px;
+    height: auto;
     background: linear-gradient(145deg, #0d1b2a, #1b263b);
     border: 2px solid #00ffcc;
     border-radius: 12px;
@@ -212,10 +209,11 @@ p {
     width: 100%;
     height: 160px;
     object-fit: cover;
+    object-position: top;
     border-radius: 8px;
     border: 3px solid #ff007a;
     box-shadow: 0 0 15px rgba(255, 0, 122, 0.5);
-    
+
 }
 
 .mech-name {

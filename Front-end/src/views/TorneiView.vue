@@ -4,6 +4,10 @@ export default {
   data() {
     return {
       tornei: [],
+      torneo: {
+        img: "percorso_dinamico.jpg" // Qui metti l'URL dinamico dell'immagine
+      },
+      fallbackImg: "../../public/torneo-new-york.jpg"
     };
   },
   mounted() {
@@ -23,6 +27,7 @@ export default {
   },
 };
 </script>
+
 <template>
   <main>
     <div v-if="$route.query.message" class="alert alert-success">
@@ -30,31 +35,37 @@ export default {
     </div>
     <div class="circuit-overlay">
       <div class="container position-relative">
-        <routerLink to="/tornei/add"><button class="add-button position-absolute "><i
-              class="fa-solid fa-plus"></i></button> </routerLink>
+        <router-link to="/tornei/add">
+          <button class="add-button position-absolute">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </router-link>
         <div class="row justify-content-center">
           <h1 class="neon-title col-12 text-center">TORNEI</h1>
-          <div class="col-md-4 my-4" v-for="torneo in tornei" :key="tornei.id">
-            <router-link class="text-warning" :to='"/tornei/" + torneo.id'>
-
-              <div class="card shadow-sm team-card">
-
-                <img :src="tornei.img" class="card-img-top team-image" alt="Foto Team" />
-                <div class="card-body">
-                  <div class="background-overlay"></div>
-                  <h5 class="card-title">{{ torneo.nome }}</h5>
-                  <p class="card-text">
-                    <strong>Data Inizio: </strong>{{ torneo.dataInizio }}
-                  </p>
-                  <p class="card-text">
-                    <strong>Data fine: </strong>{{ torneo.dataFine }}
-                  </p>
-                  <p class="card-text">
-                    <strong>Luogo: </strong>{{ torneo.geografica }}
-                  </p>
+          <div class="torneo-grid">
+            <div v-for="torneo in tornei" :key="torneo.id">
+              <router-link class="text-warning" :to="'/tornei/' + torneo.id">
+                <div class="card shadow-sm team-card">
+                  <img :src="torneo.img || fallbackImg"
+                       class="card-img-top team-image"
+                       alt="Foto Torneo"
+                       @error="handleError" />
+                  <div class="card-body">
+                    <div class="background-overlay"></div>
+                    <h5 class="card-title">{{ torneo.nome }}</h5>
+                    <p class="card-text">
+                      <strong>Data Inizio: </strong>{{ torneo.dataInizio }}
+                    </p>
+                    <p class="card-text">
+                      <strong>Data Fine: </strong>{{ torneo.dataFine }}
+                    </p>
+                    <p class="card-text">
+                      <strong>Luogo: </strong>{{ torneo.geografica }}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </router-link>
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -67,6 +78,17 @@ export default {
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  display: flex; /* Usa flex per uniformare l'altezza interna */
+  flex-direction: column;
+  height: 100%; /* Assicura che la card occupi tutta l'altezza disponibile */
+}
+
+.torneo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Sostituisce col-md-4 */
+  gap: 25px;
+  padding: 0 20px;
+  align-items: stretch; /* Fa sì che tutte le card nella griglia abbiano la stessa altezza */
 }
 
 .card-body {
@@ -74,22 +96,28 @@ export default {
   background-size: cover;
   position: relative;
   color: white;
+  flex-grow: 1; /* Permette al card-body di espandersi per occupare lo spazio rimanente */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Allinea il contenuto all'inizio */
 }
 
 p {
   position: relative;
   z-index: 2;
+  margin: 5px 0; /* Spaziatura uniforme tra i paragrafi */
 }
 
 h5 {
   position: relative;
   z-index: 2;
+  margin-bottom: 10px; /* Spazio sotto il titolo */
 }
 
 .background-overlay {
   position: absolute;
   top: 0;
-  z-index: 2;
+  z-index: 1; /* Corretto da 2 a 1 per stare sotto il testo */
   left: 0;
   width: 100%;
   height: 100%;
@@ -104,11 +132,9 @@ h5 {
   margin-bottom: 30px;
 }
 
-
 .row {
   padding: 30px;
 }
-
 
 .team-card:hover {
   transform: scale(1.05);

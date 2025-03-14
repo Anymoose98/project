@@ -19,6 +19,9 @@ export default {
 
 <template>
   <main>
+    <div class="contenitore-principale-iniziale">
+      <img src="../../public/img-iniziale.png" class="img-iniziale" alt="">
+    </div>
     <div class="container">
       <div class="row">
         <!-- Titolo -->
@@ -300,4 +303,31 @@ a {
   text-decoration: none;
   color: yellow;
 }
+
+.contenitore-principale-iniziale {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: calc(100vh - 100px);
+  overflow: hidden; /* Per nascondere l'immagine prima dell'animazione */
+}
+
+.img-iniziale {
+  width: 50%;
+  height: auto;
+  animation: slideUp 1s ease-out forwards; /* Nome animazione, durata, easing, stato finale */
+}
+
+/* Definizione dell'animazione */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%); /* Parte dal basso (fuori dal contenitore) */
+    opacity: 0; /* Opzionale: parte invisibile */
+  }
+  100% {
+    transform: translateY(0); /* Arriva alla posizione finale */
+    opacity: 1; /* Opzionale: diventa completamente visibile */
+  }
+}
+
 </style>

@@ -4,6 +4,10 @@ export default {
     data() {
         return {
             torneo: [],
+            torneo: {
+                img: "percorso_dinamico.jpg" // Sostituiscilo con il percorso corretto
+            },
+            fallbackImg: "../../public/torneo-new-york.jpg" // Sostituiscilo con il percorso della foto di default
         };
     },
     mounted() {
@@ -55,11 +59,12 @@ export default {
                     <button class="delete-button ms-5" @click=deleteTorneo><i
                             class="fa-solid fa-trash-can"></i></button>
                     <h1 class="team-section-title">TORNEO</h1>
-                    <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
+                    <router-link :to='"/tornei/edit/" + torneo.id'><button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button></router-link>
                 </div>
                 <div class="tournament-card">
                     <div class="card-header">
-                        <img :src="tornei.img" alt="Western Robotics Banner" class="banner-img" />
+                        <img :src="torneo.img || fallbackImg" alt="Western Robotics Banner" class="banner-img"
+                            @error="handleError" />
                     </div>
                     <div class="card-body">
                         <h2 class="tournament-name">{{ torneo.nome }}</h2>

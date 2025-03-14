@@ -17,7 +17,7 @@ public class Robot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 64)
+    @Column(length = 256)
     private String nome;
 
     @Column(length = 64)

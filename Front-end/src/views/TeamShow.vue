@@ -4,47 +4,51 @@ export default {
     data() {
         return {
             team: [],
+            team: {
+                img: "",
+            },
+            fallbackImg: "../../public/slide-2.png",
         };
-    },
-    mounted() {
-        this.chiamatateam();
-        this.created();
-    },
-    methods: {
-        chiamatateam() {
-            const teamid = this.$route.params.id;
-            axios.get(`http://localhost:8080/teams/${teamid}`).then((response) => {
+},
+mounted() {
+    this.chiamatateam();
+    this.created();
+},
+methods: {
+    chiamatateam() {
+        const teamid = this.$route.params.id;
+        axios.get(`http://localhost:8080/teams/${teamid}`).then((response) => {
 
-                this.team = response.data;
-            });
-        },
-        created() {
-            window.scrollTo(0, 0);
-        },
+            this.team = response.data;
+        });
+    },
+    created() {
+        window.scrollTo(0, 0);
+    },
 
         async deleteTeam() {
-            const teamId = this.$route.params.id;
-            try {
-                // Send DELETE request to the API
+        const teamId = this.$route.params.id;
+        try {
+            // Send DELETE request to the API
 
-                await axios.delete(`http://localhost:8080/teams/${teamId}`);
+            await axios.delete(`http://localhost:8080/teams/${teamId}`);
 
-                // Redirect to /robot with a success message
-                this.$router.push({
-                    path: "/team",
-                    query: { message: "Team eliminato con successo!" },
-                });
-            } catch (error) {
-                console.error("Errore durante l'eliminazione del team:", error);
-                // Optionally handle the error (e.g., show an error message)
-                this.$router.push({
-                    path: "/team",
-                    query: { message: "Errore durante l'eliminazione del team." },
-                });
-            }
-        },
-
+            // Redirect to /robot with a success message
+            this.$router.push({
+                path: "/team",
+                query: { message: "Team eliminato con successo!" },
+            });
+        } catch (error) {
+            console.error("Errore durante l'eliminazione del team:", error);
+            // Optionally handle the error (e.g., show an error message)
+            this.$router.push({
+                path: "/team",
+                query: { message: "Errore durante l'eliminazione del team." },
+            });
+        }
     },
+
+},
 };
 </script>
 <template>
@@ -56,11 +60,12 @@ export default {
                     <button class="delete-button ms-5" @click=deleteTeam><i class="fa-solid fa-trash-can"></i></button>
 
                     <h1 class="team-section-title">TEAM</h1>
-                    <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
+                    <router-link :to='"/team/edit/" + team.id'><button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button></router-link>
                 </div>
                 <div class="team-card">
                     <div class="card-header">
-                        <img :src="team.img" alt="Cyber Crushers Banner" class="banner-img" />
+                        <img v-if="team.img" :src="team.img" alt="Cyber Crushers Banner" class="card-img-top team-image" />
+                        <img v-else :src="fallbackImg" alt="Default Banner" class="card-img-top team-image" />
                     </div>
                     <div class="card-body">
                         <h2 class="team-name">{{ team.nome }}</h2>

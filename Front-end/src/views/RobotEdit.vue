@@ -5,8 +5,6 @@ export default {
         return {
             teams: [],
             tornei: [],
-            robot2: [],
-
             robot: {
                 nome: "",
                 modello: "",
@@ -15,6 +13,7 @@ export default {
                 altezza: "",
                 stileDiCombattimento: "",
                 velocita: "",
+                img: "",
                 punteggioRobot: "",
                 teamRoboticaId: null,
                 torneiIds: []
@@ -24,149 +23,159 @@ export default {
     mounted() {
         this.chiamatateam();
         this.chiamatatornei();
-        this.chiamatarobot();
+        this.loadRobotData();
     },
     methods: {
         chiamatateam() {
             axios.get("http://localhost:8080/teams").then((response) => {
-                console.log(response.data);
                 this.teams = response.data;
             });
         },
 
         chiamatatornei() {
             axios.get("http://localhost:8080/tornei").then((response) => {
-                console.log(response.data);
                 this.tornei = response.data;
             });
         },
 
-
-        chiamatarobot() {
+        loadRobotData() {
             const robotId = this.$route.params.id;
-            console.log(robotId);
-            axios.get(`http://localhost:8080/robots/${robotId}`).then((response) => {
-
-                this.robot2 = response.data;
-            });
+            axios.get(`http://localhost:8080/robots/${robotId}`)
+                .then((response) => {
+                    const data = response.data;
+                    this.robot = {
+                        nome: data.nome,
+                        modello: data.modello,
+                        materiale: data.materiale,
+                        peso: data.peso,
+                        altezza: data.altezza,
+                        stileDiCombattimento: data.stileDiCombattimento,
+                        velocita: data.velocita,
+                        img: data.img,
+                        punteggioRobot: data.punteggioRobot,
+                        teamRoboticaId: data.teamRoboticaId,
+                        torneiIds: data.torneiIds || []
+                    };
+                })
+                .catch((error) => {
+                    console.error("Errore nel caricamento del robot:", error);
+                });
         },
 
-        submitRobot() {
+        updateRobot() {
             const robotId = this.$route.params.id;
-            // Converti i valori numerici da stringa a numero
             const robotData = {
-                nome: this.robot2.nome,
-                modello: this.robot2.modello,
-                materiale: this.robot2.materiale,
-                peso: parseFloat(this.robot2.peso),
-                altezza: parseFloat(this.robot2.altezza),
-                stileDiCombattimento: this.robot2.stileDiCombattimento,
-                velocita: parseFloat(this.robot2.velocita),
-                punteggioRobot: parseInt(this.robot2.punteggioRobot),
-                teamRoboticaId: parseInt(this.robot2.teamRoboticaId),
-                torneiIds: this.robot2.torneiIds.map(id => parseInt(id))
+                nome: this.robot.nome,
+                modello: this.robot.modello,
+                materiale: this.robot.materiale,
+                img: this.robot.img,
+                peso: parseFloat(this.robot.peso),
+                altezza: parseFloat(this.robot.altezza),
+                stileDiCombattimento: this.robot.stileDiCombattimento,
+                velocita: parseFloat(this.robot.velocita),
+                punteggioRobot: parseInt(this.robot.punteggioRobot),
+                teamRoboticaId: parseInt(this.robot.teamRoboticaId),
+                torneiIds: this.robot.torneiIds.map(id => parseInt(id))
             };
 
-            axios.put('http://localhost:8080/robots/${robotId}', robotData)
-            console.log(robotData)
+            axios.put(`http://localhost:8080/robots/${robotId}`, robotData)
                 .then((response) => {
-                    console.log("Robot aggiunto con successo:", response.data);
-                    // alert("Robot aggiunto con successo!");
-
-                    // Redirect to /robot with a success message
+                    console.log("Robot aggiornato con successo:", response.data);
                     this.$router.push({
                         path: "/robot",
-                        query: { message: "Robot Aggiunto con successo!" },
+                        query: { message: "Robot aggiornato con successo!" },
                     });
-                    // Resetta il form dopo il successo
-                    this.resetForm();
                 })
-        },
+                .catch((error) => {
+                    console.error("Errore nell'aggiornamento del robot:", error);
+                });
+        }
     },
 };
 </script>
+
 <template>
     <main class="tech-arena d-flex align-items-center">
         <div class="dark-circuit"></div>
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="neon-title">Modifica robot</h1>
+                    <h1 class="neon-title">Modifica Robot</h1>
                 </div>
                 <div class="col-12">
-                    <form @submit.prevent="submitRobot">
+                    <form @submit.prevent="updateRobot">
                         <div class="d-flex flex-wrap">
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="nomeRobot" class="form-label">Nome Robot</label>
-                                    <input v-model="robot2.nome" class="form-control" type="text" id="nomeRobot"
-                                        placeholder="Inserisci il nome del Robot" aria-label="default input example"
-                                        required>
-
+                                    <input v-model="robot.nome" class="form-control" type="text" id="nomeRobot"
+                                        placeholder="Inserisci il nome del Robot" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="modello" class="form-label">Modello</label>
-                                    <input v-model="robot2.modello" class="form-control" type="text" id="modello"
+                                    <input v-model="robot.modello" class="form-control" type="text" id="modello"
                                         placeholder="Inserisci il modello" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="materiale" class="form-label">Materiale</label>
-                                    <input v-model="robot2.materiale" class="form-control" type="text" id="materiale"
-                                        placeholder="Inserisci il materiale" aria-label="default input example"
-                                        required>
+                                    <input v-model="robot.materiale" class="form-control" type="text" id="materiale"
+                                        placeholder="Inserisci il materiale" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="peso" class="form-label">Peso</label>
-                                    <input v-model="robot2.peso" class="form-control" type="number" id="peso"
+                                    <input v-model="robot.peso" class="form-control" type="number" id="peso"
                                         placeholder="Esprimi il peso in Kg" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="altezza" class="form-label">Altezza</label>
-                                    <input v-model="robot2.altezza" class="form-control" type="number" id="altezza"
-                                        placeholder="Esprimi l'altezza in centimetri" aria-label="default input example"
-                                        required>
+                                    <input v-model="robot.altezza" class="form-control" type="number" id="altezza"
+                                        placeholder="Esprimi l'altezza in centimetri" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="stile" class="form-label">Stile di combattimento</label>
-                                    <input v-model="robot2.stileDiCombattimento" class="form-control" type="text"
-                                        id="stile" placeholder="Inserisci lo stile di combattimento"
-                                        aria-label="default input example" required>
+                                    <input v-model="robot.stileDiCombattimento" class="form-control" type="text"
+                                        id="stile" placeholder="Inserisci lo stile di combattimento" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="velocita" class="form-label">Velocità</label>
-                                    <input v-model="robot2.velocita" class="form-control" type="number" id="velocita"
-                                        placeholder="Inserisci la velocità in Km/h" aria-label="default input example"
-                                        required>
+                                    <input v-model="robot.velocita" class="form-control" type="number" id="velocita"
+                                        placeholder="Inserisci la velocità in Km/h" aria-label="default input example" required>
                                 </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <div class="px-2">
                                     <label for="punteggio" class="form-label">Punteggio Robot</label>
-                                    <input v-model="robot2.punteggioRobot" class="form-control" type="number"
+                                    <input v-model="robot.punteggioRobot" class="form-control" type="number"
                                         id="punteggio" placeholder="Inserisci il punteggio"
                                         aria-label="default input example" required>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <div class="px-2">
+                                    <label for="img" class="form-label">Inserisci url di una foto</label>
+                                    <input v-model="robot.img" class="form-control" type="text"
+                                        id="img" placeholder="Inserisci il link di una foto" aria-label="default input example">
                                 </div>
                             </div>
                             <div class="col-6 mb-4">
                                 <div class="px-2">
                                     <label for="team" class="form-label">Team robotica</label>
-                                    <select v-model="robot2.teamRoboticaId" class="form-select" id="team" required>
+                                    <select v-model="robot.teamRoboticaId" class="form-select" id="team"
+                                        aria-label="Default select example" required>
                                         <option value="">Scegli il team</option>
-                                        <option v-for="team in teams" :key="team.id" :value="team.id">
-                                            {{ team.nome }}
-                                        </option>
+                                        <option v-for="team in teams" :key="team.id" :value="team.id">{{ team.nome }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -184,7 +193,7 @@ export default {
                             </div>
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="back-button">Submit</button>
+                            <button type="submit" class="back-button">Aggiorna Robot</button>
                         </div>
                     </form>
                 </div>
@@ -208,7 +217,6 @@ export default {
     text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
     margin-bottom: 30px;
     margin-left: 50px;
-
 }
 
 .back-button {

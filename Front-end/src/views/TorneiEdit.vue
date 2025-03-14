@@ -8,58 +8,79 @@ export default {
                 dataInizio: "",
                 dataFine: "",
                 geografica: "",
-                img:""
+                img: ""
             }
         };
     },
     mounted() {
-        // Vuoto se non ci sono chiamate iniziali
+        this.loadTorneoData();
     },
     methods: {
-        submitTorneo() {
+        loadTorneoData() {
+            const torneoId = this.$route.params.id;
+            axios.get(`http://localhost:8080/tornei/${torneoId}`)
+                .then((response) => {
+                    const data = response.data;
+                    this.torneo = {
+                        nome: data.nome,
+                        dataInizio: data.dataInizio.split('T')[0], // Converte la data ISO al formato YYYY-MM-DD
+                        dataFine: data.dataFine.split('T')[0],     // Converte la data ISO al formato YYYY-MM-DD
+                        geografica: data.geografica,
+                        img: data.img
+                    };
+                })
+                .catch((error) => {
+                    console.error("Errore nel caricamento del torneo:", error);
+                });
+        },
+
+        updateTorneo() {
+            const torneoId = this.$route.params.id;
             const torneoData = {
                 nome: this.torneo.nome,
-                dataInizio: this.torneo.dataInizio, // Stringa nel formato atteso dal backend (es. ISO 8601)
-                dataFine: this.torneo.dataFine,     // Stringa nel formato atteso dal backend (es. ISO 8601)
-                geografica: this.torneo.geografica,  // Stringa per la posizione geografica
+                dataInizio: this.torneo.dataInizio, // Formato YYYY-MM-DD dal campo date
+                dataFine: this.torneo.dataFine,     // Formato YYYY-MM-DD dal campo date
+                geografica: this.torneo.geografica,
                 img: this.torneo.img
             };
 
-            axios.post("http://localhost:8080/tornei", torneoData)
+            axios.put(`http://localhost:8080/tornei/${torneoId}`, torneoData)
                 .then((response) => {
-                    console.log("Torneo aggiunto con successo:", response.data);
-                    // Redirect a /tornei con un messaggio di successo
+                    console.log("Torneo aggiornato con successo:", response.data);
                     this.$router.push({
                         path: "/tornei",
-                        query: { message: "Torneo aggiunto con successo!" }
+                        query: { message: "Torneo aggiornato con successo!" }
                     });
-                    // Resetta il form dopo il successo
-                    this.resetForm();
                 })
-
+                .catch((error) => {
+                    console.error("Errore durante l'aggiornamento del torneo:", error);
+                    alert("Errore durante l'aggiornamento del torneo.");
+                });
         },
+
         resetForm() {
             this.torneo = {
                 nome: "",
                 dataInizio: "",
                 dataFine: "",
                 geografica: "",
-                img:""
+                img: ""
             };
         }
     },
 };
 </script>
+
 <template>
     <main class="tech-arena d-flex align-items-center">
         <div class="dark-circuit"></div>
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="neon-title">Aggiungi un torneo</h1>
+                    <h1 class="neon-title">Modifica Torneo</h1>
                 </div>
                 <div class="col-12">
-                    <form @submit.prevent="submitTorneo">
+                    <form @submit.prevent="updateTorneo">
                         <div class="d-flex flex-wrap">
                             <div class="col-6 mb-3">
                                 <div class="px-2">
@@ -92,14 +113,13 @@ export default {
                             <div class="col-12 mb-3">
                                 <div class="px-2">
                                     <label for="img" class="form-label">Inserisci url foto</label>
-                                    <input v-model="torneo.img" class="form-control" type="text" id="nomeTorneo"
-                                        placeholder="Inserisci il link della foto" aria-label="default input example" required>
+                                    <input v-model="torneo.img" class="form-control" type="text" id="img"
+                                        placeholder="Inserisci il link della foto" aria-label="default input example" >
                                 </div>
                             </div>
-    
                         </div>
                         <div class="col-12 text-center">
-                            <button type="submit" class="back-button">Submit</button>
+                            <button type="submit" class="back-button">Aggiorna Torneo</button>
                         </div>
                     </form>
                 </div>
@@ -123,7 +143,6 @@ export default {
     text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #ff0000;
     margin-bottom: 30px;
     margin-left: 50px;
-
 }
 
 .back-button {

@@ -37,6 +37,10 @@ const router = createRouter({
       component:()=>import('../views/TeamShow.vue')
     },
     {
+      path: '/team/edit/:id',
+      component: () => import('../views/TeamEdit.vue'),
+    },
+    {
       path: '/team/add',
       component: () => import('../views/TeamAdd.vue'),
     },
@@ -48,6 +52,10 @@ const router = createRouter({
     {
       path:'/tornei/:id',name:'TorneoShow',
       component:()=>import('../views/TorneoShow.vue')
+    },
+    {
+      path: '/tornei/edit/:id',
+      component: () => import('../views/TorneiEdit.vue'),
     },
     {
       path: '/tornei/add',

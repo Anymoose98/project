@@ -14,6 +14,7 @@ export default {
                 altezza: "",
                 stileDiCombattimento: "",
                 velocita: "",
+                img:"",
                 punteggioRobot: "",
                 teamRoboticaId: null,
                 torneiIds: []
@@ -45,6 +46,7 @@ export default {
                 nome: this.robot.nome,
                 modello: this.robot.modello,
                 materiale: this.robot.materiale,
+                img: this.robot.img,
                 peso: parseFloat(this.robot.peso),
                 altezza: parseFloat(this.robot.altezza),
                 stileDiCombattimento: this.robot.stileDiCombattimento,
@@ -137,6 +139,13 @@ export default {
                                     <input v-model="robot.punteggioRobot" class="form-control" type="number"
                                         id="punteggio" placeholder="Inserisci il punteggio"
                                         aria-label="default input example" required>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <div class="px-2">
+                                    <label for="img" class="form-label">Inserisci url di una foto</label>
+                                    <input v-model="robot.img" class="form-control" type="text"
+                                        id="stile" placeholder="Inserisci il link di una foto" aria-label="default input example">
                                 </div>
                             </div>
                             <div class="col-6 mb-4">

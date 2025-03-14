@@ -5,7 +5,11 @@ export default {
     return {
       robot: [],
       Id2: this.$route.params.id,
-      
+
+      robot: {
+        img: "" // Se è null, undefined o stringa vuota, mostra il fallback
+      },
+      fallbackImg: "../../public/robot-viola.jpg"
     };
   },
   mounted() {
@@ -64,7 +68,8 @@ export default {
         <div class="robot-display" v-if="robot">
           <div class="mech-card">
             <div class="mech-plate">
-              <img :src="robot.img" alt="Robot" class="mech-avatar" />
+              <img v-if="robot.img" :src="robot.img" alt="Robot" class="mech-avatar" />
+              <img v-else :src="fallbackImg" alt="Default Robot" class="mech-avatar" />
               <h2 class="mech-name">{{ robot.nome }}</h2>
               <p class="mech-spec">Modello: {{ robot.modello }}</p>
               <!-- /<p class="mech-spec">Materiale: {{ robot.materiale }}</p> -->
@@ -85,7 +90,7 @@ export default {
         </div>
   
   
-        <router-link to="/robot" class="back-button">Torna alla Galleria</router-link>
+        <router-link to="/robot" class="back-button">TORNA ALLA GALLERIA</router-link>
       </div>
     </div>
   </main>
@@ -157,7 +162,8 @@ export default {
 .mech-avatar {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  object-position: top;
+  object-fit:cover;
   border-radius: 10px;
   border: 4px solid #ff007a;
   box-shadow: 0 0 20px rgba(255, 0, 122, 0.6);

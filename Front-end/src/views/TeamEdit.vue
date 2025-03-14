@@ -13,35 +13,51 @@ export default {
         };
     },
     mounted() {
-        // Puoi lasciare vuoto se non ci sono chiamate iniziali da fare
+        this.loadTeamData();
     },
     methods: {
-        submitTeam() {
-            // Converti i valori numerici da stringa a numero
+        loadTeamData() {
+            const teamId = this.$route.params.id;
+            axios.get(`http://localhost:8080/teams/${teamId}`)
+                .then((response) => {
+                    const data = response.data;
+                    this.team = {
+                        nome: data.nome,
+                        membri: data.membri,
+                        punteggioTeam: data.punteggioTeam,
+                        torneiVinti: data.torneiVinti,
+                        img: data.img
+                    };
+                })
+                .catch((error) => {
+                    console.error("Errore nel caricamento del team:", error);
+                });
+        },
+
+        updateTeam() {
+            const teamId = this.$route.params.id;
             const teamData = {
                 nome: this.team.nome,
-                membri: parseInt(this.team.membri), // Numero di membri come intero
-                punteggioTeam: parseInt(this.team.punteggioTeam), // Punteggio come intero
-                torneiVinti: parseInt(this.team.torneiVinti), // Tornei vinti come intero
+                membri: parseInt(this.team.membri),
+                punteggioTeam: parseInt(this.team.punteggioTeam),
+                torneiVinti: parseInt(this.team.torneiVinti),
                 img: this.team.img
             };
 
-            axios.post("http://localhost:8080/teams", teamData)
+            axios.put(`http://localhost:8080/teams/${teamId}`, teamData)
                 .then((response) => {
-                    console.log("Team aggiunto con successo:", response.data);
-                    // Redirect to /teams con un messaggio di successo
+                    console.log("Team aggiornato con successo:", response.data);
                     this.$router.push({
                         path: "/team",
-                        query: { message: "Team aggiunto con successo!" }
+                        query: { message: "Team aggiornato con successo!" }
                     });
-                    // Resetta il form dopo il successo
-                    this.resetForm();
                 })
                 .catch((error) => {
-                    console.error("Errore durante l'aggiunta del team:", error);
-                    alert("Errore durante l'aggiunta del team.");
+                    console.error("Errore durante l'aggiornamento del team:", error);
+                    alert("Errore durante l'aggiornamento del team.");
                 });
         },
+
         resetForm() {
             this.team = {
                 nome: "",
@@ -54,16 +70,17 @@ export default {
     },
 };
 </script>
+
 <template>
     <main class="tech-arena d-flex align-items-center">
         <div class="dark-circuit"></div>
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="neon-title">Aggiungi un Team</h1>
+                    <h1 class="neon-title">Modifica Team</h1>
                 </div>
                 <div class="col-12">
-                    <form @submit.prevent="submitTeam">
+                    <form @submit.prevent="updateTeam">
                         <div class="d-flex flex-wrap">
                             <div class="col-6 mb-3">
                                 <div class="px-2">
@@ -100,13 +117,12 @@ export default {
                             <div class="col-12 mb-3">
                                 <div class="px-2">
                                     <label for="img" class="form-label">Inserisci url foto</label>
-                                    <input v-model="team.img" class="form-control" type="text" id="nomeTeam"
-                                        placeholder="Inserisci il link delle foto" aria-label="default input example"
-                                        required>
+                                    <input v-model="team.img" class="form-control" type="text" id="img"
+                                        placeholder="Inserisci il link delle foto" aria-label="default input example">
                                 </div>
                             </div>
                             <div class="col-12 text-center">
-                                <button type="submit" class="back-button">Submit</button>
+                                <button type="submit" class="back-button">Aggiorna Team</button>
                             </div>
                         </div>
                     </form>
@@ -131,7 +147,6 @@ export default {
     text-shadow: 0 0 10px #2bff00, 0 0 20px #2bff00, 0 0 40px #2bff00;
     margin-bottom: 30px;
     margin-left: 50px;
-
 }
 
 .back-button {
@@ -166,7 +181,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     background: linear-gradient(to bottom, rgba(0, 67, 23, 0.8), rgba(0, 0, 0, 0.9));
     z-index: 1;
     opacity: 0.85;
