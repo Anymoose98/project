@@ -4,6 +4,7 @@ export default {
   data() {
     return {
       robot: [],
+      Id2: this.$route.params.id,
       
     };
   },
@@ -58,7 +59,7 @@ export default {
         <div class="d-flex justify-content-between align-items-center">
           <button class="delete-button ms-5" @click = deleteRobot><i class="fa-solid fa-trash-can"></i></button>
           <h1 class="neon-title">Dettagli Robot</h1>
-          <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button>
+          <router-link :to='"/robot/edit/" + robot.id'> <button class="customize-button ms-5"> <i class="fa-solid fa-edit"> </i></button></router-link>
         </div>
         <div class="robot-display" v-if="robot">
           <div class="mech-card">
