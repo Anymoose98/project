@@ -102,6 +102,7 @@ export default {
   background: url('https://via.placeholder.com/1920x1080') no-repeat center/cover;
   background-position: center;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .dark-circuit {

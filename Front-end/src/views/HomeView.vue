@@ -22,7 +22,7 @@ export default {
     <div class="contenitore-principale-iniziale">
       <div class="contenitore-testo">
         <h1 class="testo-steel-fight">STEEL FIGHT</h1>
-    </div>
+      </div>
       <img src="../../public/img-iniziale.png" class="img-iniziale" alt="">
     </div>
     <div class="container">
@@ -36,7 +36,7 @@ export default {
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
+            aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
               aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
@@ -69,18 +69,24 @@ export default {
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
           <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+      </div>
+    </div>
         <!-- Fine carosello -->
-
+        
+        <div class="contenitore-separatore">
+        </div>
+        <div class="container">
+          <div class="row">
         <!-- Titolo 2 -->
         <div class="col-12">
           <h1 class="text-center text-warning mt-5 mb-3">I prossimi tornei</h1>
@@ -308,72 +314,95 @@ a {
 }
 
 .contenitore-principale-iniziale {
-    display: flex;
-    flex-direction: column; /* Modificato per impilare testo e immagine */
-    justify-content: center;
-    align-items: center; /* Centrato orizzontalmente */
-    height: calc(100vh - 100px);
-    overflow: hidden;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Modificato per impilare testo e immagine */
+  justify-content: center;
+  align-items: center;
+  /* Centrato orizzontalmente */
+  height: calc(100vh - 100px);
+  overflow: hidden;
+  position: relative;
 }
 
 .img-iniziale {
-    width: 50%;
-    height: auto;
-    animation: slideUp 3s ease-out forwards;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: slideUp 3s ease-out forwards;
 }
 
 .contenitore-testo {
-    position: absolute; /* Per sovrapporre il testo all'immagine */
-    z-index: 1; /* Assicura che il testo stia sopra l'immagine */
+  position: absolute;
+  /* Per sovrapporre il testo all'immagine */
+  z-index: 1;
+  /* Assicura che il testo stia sopra l'immagine */
 }
 
 .testo-steel-fight {
-    font-family: 'Impact', sans-serif; /* Font bold e d'impatto */
-    font-size: 4rem; /* Dimensione grande */
-    color: #fff; /* Bianco come base */
-    text-transform: uppercase;
-    text-shadow: 
-        0 0 10px #ff0000, /* Bagliore rosso */
-        0 0 20px #ff0000,
-        2px 2px 0 #000, /* Ombra nera spostata */
-        -2px -2px 0 #000;
-    letter-spacing: 2px;
-    animation: fadeInGlow 3s ease-out forwards; /* Animazione per il testo */
+  font-family: 'Impact', sans-serif;
+  /* Font bold e d'impatto */
+  font-size: 4rem;
+  /* Dimensione grande */
+  color: #fff;
+  /* Bianco come base */
+  text-transform: uppercase;
+  text-shadow:
+    0 0 10px #ff0000,
+    /* Bagliore rosso */
+    0 0 20px #ff0000,
+    2px 2px 0 #000,
+    /* Ombra nera spostata */
+    -2px -2px 0 #000;
+  letter-spacing: 2px;
+  animation: fadeInGlow 3s ease-out forwards;
+  /* Animazione per il testo */
 }
 
 /* Animazione immagine */
 @keyframes slideUp {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Animazione testo */
 @keyframes fadeInGlow {
-    0% {
-        opacity: 0;
-        transform: scale(0.8); /* Parte leggermente più piccolo */
-        text-shadow: none; /* Nessun bagliore all'inizio */
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.1); /* Effetto "rimbalzo" */
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        text-shadow: 
-            0 0 10px #f6ff00,
-            0 0 20px #f6ff00,
-            2px 2px 0 #000,
-            -2px -2px 0 #000;
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    /* Parte leggermente più piccolo */
+    text-shadow: none;
+    /* Nessun bagliore all'inizio */
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    /* Effetto "rimbalzo" */
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    text-shadow:
+      0 0 10px #f6ff00,
+      0 0 20px #f6ff00,
+      2px 2px 0 #000,
+      -2px -2px 0 #000;
+  }
 }
 
+.contenitore-separatore {
+  height: 120px;
+  background-image: url('../../public/separatore-removebg-preview.png');
+  width: 100%;
+  background-repeat: repeat-x;
+}
 </style>

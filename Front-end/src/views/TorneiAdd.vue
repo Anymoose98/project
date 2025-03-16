@@ -93,7 +93,7 @@ export default {
                                 <div class="px-2">
                                     <label for="img" class="form-label">Inserisci url foto</label>
                                     <input v-model="torneo.img" class="form-control" type="text" id="nomeTorneo"
-                                        placeholder="Inserisci il link della foto" aria-label="default input example" required>
+                                        placeholder="Inserisci il link della foto" aria-label="default input example" 
                                 </div>
                             </div>
     

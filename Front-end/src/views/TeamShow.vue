@@ -99,6 +99,7 @@ methods: {
     background: url('https://via.placeholder.com/1920x1080') no-repeat center/cover;
     background-position: center;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 .circuit-overlay {
@@ -107,7 +108,7 @@ methods: {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 67, 23, 0.8), rgba(0, 0, 0, 0.9));
+    background: linear-gradient(to bottom, rgba(9, 58, 26, 0.8), rgba(0, 0, 0, 0.9));
     opacity: 0.85;
 }
 
